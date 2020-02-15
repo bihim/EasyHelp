@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/hey_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="#FFF">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="@string/app_name"
+        app:titleTextColor="#212121"
+        android:backgroundTint="#FFF"
+        android:layout_alignParentStart="true" />
+
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar_main"
+        android:layout_above="@+id/bottom_nav_card"/>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/bottom_nav_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="8dp"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:layout_alignParentBottom="true"
+        app:cardElevation="15dp">
+
+    <com.gauravk.bubblenavigation.BubbleNavigationLinearView
+        android:id="@+id/bottom_navigation_view_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="8dp"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/l_item_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bt_active="true"
+            app:bt_colorActive="@color/home_active"
+            app:bt_colorInactive="@color/home_inactive"
+            app:bt_icon="@drawable/ic_home"
+            app:bt_shape="@drawable/transition_home"
+            app:bt_title="Home" />
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/l_item_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bt_badgeBackgroundColor="@color/message_active"
+            app:bt_colorActive="@color/message_active"
+            app:bt_colorInactive="@color/message_inactive"
+            app:bt_icon="@drawable/ic_message"
+            app:bt_shape="@drawable/transition_message"
+            app:bt_title="Message" />
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/l_item_ads"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bt_colorActive="@color/speaker_active"
+            app:bt_colorInactive="@color/speaker_inactive"
+            app:bt_icon="@drawable/ic_advertisement"
+            app:bt_shape="@drawable/transition_advertisement"
+            app:bt_title="Advertisement" />
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/l_item_news"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bt_colorActive="@color/news_active"
+            app:bt_colorInactive="@color/news_inactive"
+            app:bt_icon="@drawable/ic_news"
+            app:bt_shape="@drawable/transition_news"
+            app:bt_title="News"
+            app:bt_badgeText="100"
+            app:bt_badgeTextSize="10sp"/>
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/l_item_blood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bt_colorActive="@color/blood_active"
+            app:bt_colorInactive="@color/blood_inactive"
+            app:bt_icon="@drawable/ic_blood"
+            app:bt_shape="@drawable/transition_blood"
+            app:bt_title="Blood" />
+
+
+
+    </com.gauravk.bubblenavigation.BubbleNavigationLinearView>
+
+</androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

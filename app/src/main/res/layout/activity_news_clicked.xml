@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OtherActivities.NewsClickedActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar_news"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="@string/app_name"
+        app:titleTextColor="#212121"
+        android:backgroundTint="#FFF"
+        android:layout_alignParentStart="true" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar_news"
+            android:layout_margin="15dp"
+            android:elevation="10dp">
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_margin="8dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:id="@+id/news_image_clicked"
+                        android:src="@drawable/google"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"/>
+                    <TextView
+                        android:id="@+id/news_headline_clicked"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="This is headline for this activity"
+                        android:layout_marginTop="15dp"
+                        android:textSize="30sp"
+                        android:textColor="#000"/>
+
+                    <View
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="#4F000000"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"/>
+
+                    <TextView
+                        android:id="@+id/news_description_clicked"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:justificationMode="inter_word"
+                        android:text="This is description for this activity"
+                        android:textSize="20sp"
+                        android:textColor="#000"/>
+                </LinearLayout>
+
+            </ScrollView>
+
+        </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

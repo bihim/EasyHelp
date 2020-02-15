@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFF</color>
+    <color name="colorPrimaryDark">#FFF</color>
+    <color name="colorAccent">#6B70D0</color>
+    <color name="home_active">#593C67</color>
+    <color name="home_inactive">#3B2844</color>
+    <color name="home_active_light">#4A593C67</color>
+    <color name="blood_active">#D32F2F</color>
+    <color name="blood_inactive">#B12626</color>
+    <color name="blood_active_light">#48FF4646</color>
+    <color name="message_active">#ECBC56</color>
+    <color name="message_inactive">#C09945</color>
+    <color name="message_active_light">#54ECBC56</color>
+    <color name="news_active">#008187</color>
+    <color name="news_inactive">#005F63</color>
+    <color name="news_active_light">#52008187</color>
+    <color name="speaker_active">#DD845B</color>
+    <color name="speaker_inactive">#AA6546</color>
+    <color name="speaker_active_light">#56DD845B</color>
+    <color name="background_color">#2d3436</color>
+
+    <color name="help_gradient_button_color_start">#019F0B</color>
+    <color name="help_gradient_button_color_end">#50F704</color>
+</resources>

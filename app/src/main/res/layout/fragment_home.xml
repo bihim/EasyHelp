@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="3"
+    android:background="#FFF">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <!--Profile section starts-->
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/profile_card"
+                    android:orientation="vertical"
+                    android:layout_width="230dp"
+                    android:layout_height="match_parent"
+                    app:cardCornerRadius="15dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="10dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+
+                    <LinearLayout
+                        android:background="@drawable/profile_gradient"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:weightSum="3">
+
+                        <LinearLayout
+                            android:padding="5dp"
+                            android:layout_weight="0.8"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:src="@drawable/ic_profile"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_weight="2.2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="8dp"
+                            android:gravity="center_vertical">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:text="Profile"
+                                android:textStyle="bold"
+                                android:textColor="#FFF"
+                                android:textSize="18sp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"/>
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:text="Zubaer Alam Bihim"
+                                android:textColor="#FFF"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:text="Android App Developer"
+                                android:textColor="#FFF"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:text="01911911088"
+                                android:textColor="#FFF"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <!--Profile section ends-->
+
+                <!--Wallet section starts-->
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/wallet_card"
+                    android:orientation="vertical"
+                    android:layout_width="230dp"
+                    android:layout_height="match_parent"
+                    app:cardCornerRadius="15dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="10dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+
+                    <LinearLayout
+                        android:background="@drawable/wallet_gradient"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:weightSum="3">
+
+                        <LinearLayout
+                            android:padding="5dp"
+                            android:layout_weight="0.8"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:src="@drawable/ic_wallet"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_weight="2.2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="8dp"
+                            android:gravity="center_vertical">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:text="Total Balance"
+                                android:textStyle="bold"
+                                android:textColor="#FFF"
+                                android:textSize="18sp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"/>
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:text="Tk: 12,000"
+                                android:textColor="#FFF"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:text="Last Spend: 14 Feb, 2020"
+                                android:textColor="#FFF"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <!--Wallet section ends-->
+
+                <!--Help section starts-->
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/help_card"
+                    android:orientation="vertical"
+                    android:layout_width="230dp"
+                    android:layout_height="match_parent"
+                    app:cardCornerRadius="15dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="10dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+
+                    <LinearLayout
+                        android:background="@drawable/help_gradient"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:weightSum="3">
+
+                        <LinearLayout
+                            android:padding="5dp"
+                            android:layout_weight="0.8"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:src="@drawable/ic_help"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_weight="2.2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="8dp"
+                            android:gravity="center_vertical">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:text="Helps"
+                                android:textStyle="bold"
+                                android:textColor="#FFF"
+                                android:textSize="18sp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"/>
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:text="Total Helps: 300"
+                                android:textColor="#FFF"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <!--Help section ends-->
+
+                <!--Donate section starts-->
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/donate_card"
+                    android:orientation="vertical"
+                    android:layout_width="230dp"
+                    android:layout_height="match_parent"
+                    app:cardCornerRadius="15dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="10dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+
+                    <LinearLayout
+                        android:background="@drawable/donate_gradient"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:weightSum="3">
+
+                        <LinearLayout
+                            android:padding="5dp"
+                            android:layout_weight="0.8"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:src="@drawable/ic_donation"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="5dp"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_weight="2.2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="8dp"
+                            android:gravity="center_vertical">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:text="Donation"
+                                android:textStyle="bold"
+                                android:textColor="#FFF"
+                                android:textSize="18sp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"/>
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:text="Tk: 12,000"
+                                android:textColor="#FFF"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:text="Thank you for your donation"
+                                android:textColor="#FFF"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!--Donate section ends-->
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2.5"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="#FFF">
+
+            <ss.anoop.awesometextinputlayout.AwesomeTextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:borderColor="@color/help_gradient_button_color_start"
+                app:borderWidth="2dp"
+                app:cornerRadius="8dp"
+                android:padding="16dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp">
+
+                <EditText
+                    android:id="@+id/help_edittext"
+                    android:hint="Help me"
+                    android:lines="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </ss.anoop.awesometextinputlayout.AwesomeTextInputLayout>
+
+
+            <life.sabujak.roundedbutton.RoundedButton
+                android:id="@+id/help_button"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:padding="24dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="HELP"
+                android:textStyle="bold"
+                android:textSize="50sp"
+                android:textColor="#FFF"
+                app:buttonGradientStartColor="@color/help_gradient_button_color_start"
+                app:buttonGradientEndColor="@color/help_gradient_button_color_end"
+                app:buttonCornerRadius="200dp" />
+
+
+        </LinearLayout>
+
+</LinearLayout>
