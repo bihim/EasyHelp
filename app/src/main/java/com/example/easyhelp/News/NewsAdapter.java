@@ -28,15 +28,11 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder>
     public static final String IMAGE = "newsImage";
     public static final String HEADLINE = "newsHeadline";
     public static final String DESCRIPTION = "newsDescription";
+    public static final String TIMEANDDATE = "newsTimeAndDate";
 
     public interface OnItemClickListener
     {
         void onItemClick(int position);
-    }
-
-    public void setOnItemClickListener(OnItemClickListener onItemClickListener)
-    {
-        this.onItemClickListener = onItemClickListener;
     }
 
     public NewsAdapter(ArrayList<NewsItems> newsItems, Context context)
@@ -63,6 +59,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder>
         holder.newsImage.setImageResource(selectedItems.getImageID());
         holder.newsHeader.setText(selectedItems.getHeadline());
         holder.newsDescription.setText(selectedItems.getDescription());
+        holder.newsDate.setText(selectedItems.getTimeStamp());
+
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +71,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder>
                 clickToSend.putExtra(IMAGE, selectedItems.getImageID());
                 clickToSend.putExtra(HEADLINE, selectedItems.getHeadline());
                 clickToSend.putExtra(DESCRIPTION, selectedItems.getDescription());
+                clickToSend.putExtra(TIMEANDDATE, selectedItems.getTimeStamp());
                 Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show();
                 context.startActivity(clickToSend);
             }
@@ -87,7 +86,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder>
     public class NewsHolder extends RecyclerView.ViewHolder
     {
 
-        TextView newsHeader, newsDescription;
+        TextView newsHeader, newsDescription, newsDate;
         CircleImageView newsImage;
 
         public NewsHolder(@NonNull View itemView)
@@ -97,6 +96,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder>
             newsHeader = itemView.findViewById(R.id.news_headline);
             newsDescription = itemView.findViewById(R.id.news_description);
             newsImage = itemView.findViewById(R.id.news_image);
+            newsDate = itemView.findViewById(R.id.news_date);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

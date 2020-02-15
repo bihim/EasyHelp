@@ -5,12 +5,14 @@ public class NewsItems
      private int imageID;
      private String headline;
      private String description;
+     private String timeStamp;
 
-    public NewsItems(int imageID, String headline, String description)
+    public NewsItems(int imageID, String headline, String description, String timeStamp)
     {
         this.imageID = imageID;
         this.headline = headline;
         this.description = description;
+        this.timeStamp = timeStamp;
     }
 
     public int getImageID() {
@@ -35,5 +37,13 @@ public class NewsItems
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(String timeStamp) {
+        this.timeStamp = timeStamp;
     }
 }

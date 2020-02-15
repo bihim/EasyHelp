@@ -19,6 +19,7 @@ import butterknife.Unbinder;
 import static com.example.easyhelp.News.NewsAdapter.DESCRIPTION;
 import static com.example.easyhelp.News.NewsAdapter.HEADLINE;
 import static com.example.easyhelp.News.NewsAdapter.IMAGE;
+import static com.example.easyhelp.News.NewsAdapter.TIMEANDDATE;
 
 public class NewsClickedActivity extends AppCompatActivity {
 
@@ -33,6 +34,9 @@ public class NewsClickedActivity extends AppCompatActivity {
 
     @BindView(R.id.news_description_clicked)
     TextView textViewNewsDescription;
+
+    @BindView(R.id.news_date_clicked)
+    TextView textViewNewsTimeAndDate;
 
     Unbinder unbinder;
 
@@ -51,11 +55,13 @@ public class NewsClickedActivity extends AppCompatActivity {
         int imageResource = intent.getIntExtra(IMAGE, R.drawable.android);
         String headline = intent.getStringExtra(HEADLINE);
         String description = intent.getStringExtra(DESCRIPTION);
+        String timeanddate = intent.getStringExtra(TIMEANDDATE);
 
 
         imageViewNewsImage.setImageResource(imageResource);
         textViewNewsHeadline.setText(headline);
         textViewNewsDescription.setText(description);
+        textViewNewsTimeAndDate.setText(timeanddate);
 
     }
 }
