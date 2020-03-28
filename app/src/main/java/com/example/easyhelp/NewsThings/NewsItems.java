@@ -1,4 +1,4 @@
-package com.example.easyhelp.News;
+package com.example.easyhelp.NewsThings;
 
 public class NewsItems
 {

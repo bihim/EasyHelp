@@ -1,16 +1,13 @@
 package com.example.easyhelp.Fragment;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,34 +15,25 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.easyhelp.MainActivity;
-import com.example.easyhelp.News.NewsAdapter;
-import com.example.easyhelp.News.NewsItems;
-import com.example.easyhelp.OtherActivities.NewsClickedActivity;
+import com.example.easyhelp.NewsThings.NewsAdapter;
+import com.example.easyhelp.NewsThings.NewsItems;
 import com.example.easyhelp.R;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
-
 public class NewsFragment extends Fragment
 {
 
-    @BindView(R.id.news_recycler_view)
     RecyclerView newsRecyclerView;
 
     ArrayList<NewsItems> newsItems;
     NewsAdapter newsAdapter;
-    Unbinder unbinder;
 
     Boolean isScrolling = false;
     int currentItems, totalItems, scrollOutItems;
     LinearLayoutManager linearLayoutManager;
 
-    @BindView(R.id.progress_bar_news)
     ProgressBar progressBarNews;
 
 
@@ -55,7 +43,8 @@ public class NewsFragment extends Fragment
     {
         View view = inflater.inflate(R.layout.fragment_news, container, false);
 
-        unbinder = ButterKnife.bind(this, view);
+        newsRecyclerView = view.findViewById(R.id.news_recycler_view);
+        progressBarNews = view.findViewById(R.id.progress_bar_news);
 
         newsDummyData();
 
@@ -123,7 +112,6 @@ public class NewsFragment extends Fragment
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        unbinder.unbind();
     }
 
     private void fetchData()

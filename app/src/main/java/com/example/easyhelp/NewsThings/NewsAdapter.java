@@ -1,11 +1,10 @@
-package com.example.easyhelp.News;
+package com.example.easyhelp.NewsThings;
 
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
 

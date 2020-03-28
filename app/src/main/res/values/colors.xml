@@ -22,4 +22,6 @@
 
     <color name="help_gradient_button_color_start">#019F0B</color>
     <color name="help_gradient_button_color_end">#50F704</color>
+
+    <color name="white">#FFF</color>
 </resources>

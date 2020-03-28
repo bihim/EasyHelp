@@ -4,51 +4,47 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.easyhelp.News.NewsAdapter;
 import com.example.easyhelp.R;
 import com.google.android.material.appbar.MaterialToolbar;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
-
-import static com.example.easyhelp.News.NewsAdapter.DESCRIPTION;
-import static com.example.easyhelp.News.NewsAdapter.HEADLINE;
-import static com.example.easyhelp.News.NewsAdapter.IMAGE;
-import static com.example.easyhelp.News.NewsAdapter.TIMEANDDATE;
+import static com.example.easyhelp.NewsThings.NewsAdapter.DESCRIPTION;
+import static com.example.easyhelp.NewsThings.NewsAdapter.HEADLINE;
+import static com.example.easyhelp.NewsThings.NewsAdapter.IMAGE;
+import static com.example.easyhelp.NewsThings.NewsAdapter.TIMEANDDATE;
 
 public class NewsClickedActivity extends AppCompatActivity {
 
-    @BindView(R.id.toolbar_news)
     MaterialToolbar toolbar;
 
-    @BindView(R.id.news_image_clicked)
     ImageView imageViewNewsImage;
 
-    @BindView(R.id.news_headline_clicked)
     TextView textViewNewsHeadline;
 
-    @BindView(R.id.news_description_clicked)
     TextView textViewNewsDescription;
 
-    @BindView(R.id.news_date_clicked)
     TextView textViewNewsTimeAndDate;
 
-    Unbinder unbinder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_clicked);
-        unbinder = ButterKnife.bind(this);
+
+        toolbar = findViewById(R.id.toolbar_news);
+        imageViewNewsImage = findViewById(R.id.news_image_clicked);
+        textViewNewsHeadline = findViewById(R.id.news_headline_clicked);
+        textViewNewsDescription = findViewById(R.id.news_description_clicked);
+        textViewNewsTimeAndDate = findViewById(R.id.news_date_clicked);
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+
 
         Intent intent = getIntent();
 
