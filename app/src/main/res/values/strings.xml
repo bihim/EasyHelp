@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Easy Help</string>
+
+    <string name="youtubeApiKey">AIzaSyCdBFJLxSWxPHarmauEg8PFf8qAls5tBvc</string>
 </resources>

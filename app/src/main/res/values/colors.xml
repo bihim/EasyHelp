@@ -24,4 +24,10 @@
     <color name="help_gradient_button_color_end">#50F704</color>
 
     <color name="white">#FFF</color>
+
+    <color name="login_button_gradient_start_color">#642B73</color>
+    <color name="login_button_gradient_end_color">#C6426E</color>
+
+    <color name="register_button_gradient_start_color">#F2994A</color>
+    <color name="register_button_gradient_end_color">#F2C94C</color>
 </resources>
