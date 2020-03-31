@@ -19,6 +19,7 @@ import com.example.easyhelp.OtherActivities.DonationActivity;
 import com.example.easyhelp.OtherActivities.HelpActivity;
 import com.example.easyhelp.OtherActivities.ProfileActivity;
 import com.example.easyhelp.OtherActivities.WalletActivity;
+import com.example.easyhelp.OtherActivities.WelcomeSpeech;
 import com.example.easyhelp.R;
 
 import life.sabujak.roundedbutton.RoundedButton;
@@ -28,7 +29,7 @@ public class HomeFragment extends Fragment {
 
     RoundedButton roundedButton;
 
-    CardView profileCardView, balanceCardView, helpCardView, donationCardView;
+    CardView profileCardView, balanceCardView, helpCardView, donationCardView, welcomeSpeech;
 
     EditText helpButtonEdittext;
 
@@ -42,6 +43,7 @@ public class HomeFragment extends Fragment {
         balanceCardView = view.findViewById(R.id.wallet_card);
         helpCardView = view.findViewById(R.id.help_card);
         donationCardView = view.findViewById(R.id.donate_card);
+        welcomeSpeech = view.findViewById(R.id.welcome_speech);
         helpButtonEdittext = view.findViewById(R.id.help_edittext);
 
 
@@ -75,6 +77,14 @@ public class HomeFragment extends Fragment {
             public void onClick(View v)
             {
                 startActivity(new Intent(getActivity(), DonationActivity.class));
+            }
+        });
+
+        welcomeSpeech.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(getActivity(), WelcomeSpeech.class));
             }
         });
 

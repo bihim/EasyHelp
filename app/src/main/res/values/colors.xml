@@ -30,4 +30,6 @@
 
     <color name="register_button_gradient_start_color">#F2994A</color>
     <color name="register_button_gradient_end_color">#F2C94C</color>
+
+    <color name="recyclerViewBackground">#B7B7B7</color>
 </resources>

@@ -307,6 +307,66 @@
 
                 <!--Donate section ends-->
 
+                <!--Welcome speech section starts-->
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/welcome_speech"
+                    android:orientation="vertical"
+                    android:layout_width="230dp"
+                    android:layout_height="match_parent"
+                    app:cardCornerRadius="15dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="10dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+
+                    <LinearLayout
+                        android:background="@drawable/gradient_background"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:weightSum="3">
+
+                        <LinearLayout
+                            android:padding="5dp"
+                            android:layout_weight="0.8"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:src="@drawable/ic_welcome"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="5dp"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_weight="2.2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="8dp"
+                            android:gravity="center_vertical">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:text="Welcome"
+                                android:textStyle="bold"
+                                android:textColor="#FFF"
+                                android:textSize="18sp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!--Donate section ends-->
+
             </LinearLayout>
 
         </HorizontalScrollView>

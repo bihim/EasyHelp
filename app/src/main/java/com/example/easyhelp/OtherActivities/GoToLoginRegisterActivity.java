@@ -2,32 +2,46 @@ package com.example.easyhelp.OtherActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.easyhelp.R;
-import com.omega.animatedtext.AnimatedTextView;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
+
+import life.sabujak.roundedbutton.RoundedButton;
 
 public class GoToLoginRegisterActivity extends AppCompatActivity {
 
+    RoundedButton registration, login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_go_to_login_register);
 
-
-
         YouTubePlayerView youTubePlayerView = findViewById(R.id.youtube_player_view);
         getLifecycle().addObserver(youTubePlayerView);
 
-        AnimatedTextView animatedTextView = findViewById(R.id.easy_helper_textview);
-        animatedTextView.createStrokeAnimator(0.05f).start();
+        registration = findViewById(R.id.go_to_register);
+        login = findViewById(R.id.go_to_login);
 
+        registration.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(GoToLoginRegisterActivity.this, BeforeRegistrationActivity.class));
+            }
+        });
 
-
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(GoToLoginRegisterActivity.this, LoginActivity.class));
+            }
+        });
 
 
     }
