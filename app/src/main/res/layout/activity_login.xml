@@ -53,7 +53,8 @@
             android:id="@+id/login_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter Password"/>
+            android:hint="Enter Password"
+            android:inputType="textPassword"/>
     </ss.anoop.awesometextinputlayout.AwesomeTextInputLayout>
 
     <TextView

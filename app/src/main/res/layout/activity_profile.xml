@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".OtherActivities.ProfileActivity">
-
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar_profile"
         android:layout_width="match_parent"
@@ -16,4 +16,28 @@
         android:backgroundTint="#FFF"
         android:layout_alignParentStart="true" />
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="#EDEDED">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_photo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_general"
+            app:civ_border_color="@color/login_button_gradient_start_color"
+            android:layout_margin="10dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/profile_details_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:background="#EDEDED"
+            android:layout_marginBottom="10dp"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

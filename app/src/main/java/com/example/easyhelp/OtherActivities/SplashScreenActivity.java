@@ -2,18 +2,40 @@ package com.example.easyhelp.OtherActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 
+import com.example.easyhelp.API.BaseUrl;
+import com.example.easyhelp.API.PlaceHolderAPI;
+import com.example.easyhelp.ConstructionThings.ConstructionItems;
+import com.example.easyhelp.LoginThings.LoginAPIElements;
 import com.example.easyhelp.MainActivity;
 import com.example.easyhelp.R;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
+import es.dmoral.toasty.Toasty;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class SplashScreenActivity extends AppCompatActivity {
 
     Timer timer;
+    Retrofit retrofit;
+    PlaceHolderAPI placeHolderAPI;
+    SharedPreferences preferences;
+    String baseUrl;
+    String userName;
+    String password;
+    int constructionCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,15 +43,96 @@ public class SplashScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         timer = new Timer();
-
         timer.schedule(new TimerTask() {
             @Override
             public void run()
             {
-                startActivity(new Intent(SplashScreenActivity.this, GoToLoginRegisterActivity.class));
+                login();
                 finish();
 
             }
-        }, 3300);
+        }, 5000);
+
+
+    }
+
+
+    private void login()
+    {
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        userName = preferences.getString("user_name", null);
+        password = preferences.getString("password", null);
+
+        if (userName == null && password == null)
+        {
+            startActivity(new Intent(SplashScreenActivity.this, GoToLoginRegisterActivity.class));
+        }
+
+        else
+        {
+            baseUrl = new BaseUrl().baseUrl;
+            retrofit = new Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(GsonConverterFactory.create()).build();
+            placeHolderAPI = retrofit.create(PlaceHolderAPI.class);
+
+            Call<LoginAPIElements> call = placeHolderAPI.getLoginInfo1(userName, password);
+            call.enqueue(new Callback<LoginAPIElements>() {
+                @Override
+                public void onResponse(Call<LoginAPIElements> call, Response<LoginAPIElements> response)
+                {
+                    if (!response.isSuccessful())
+                    {
+                        Toasty.error(SplashScreenActivity.this, "Error Code: " +response.code(),Toasty.LENGTH_SHORT,true).show();
+                        startActivity(new Intent(SplashScreenActivity.this, GoToLoginRegisterActivity.class));
+                    }
+
+                    LoginAPIElements loginAPIElements = response.body();
+
+                    int errorCode = loginAPIElements.getError();
+
+                    if (errorCode == 0)
+                    {
+                        startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<LoginAPIElements> call, Throwable t) {
+
+                }
+            });
+        }
+
+    }
+
+    private int construction()
+    {
+        baseUrl = new BaseUrl().baseUrl;
+        retrofit = new Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(GsonConverterFactory.create()).build();
+        placeHolderAPI = retrofit.create(PlaceHolderAPI.class);
+
+        Call<ConstructionItems> constructionCall = placeHolderAPI.getConstructionInfo(1);
+        constructionCall.enqueue(new Callback<ConstructionItems>() {
+            @Override
+            public void onResponse(Call<ConstructionItems> call, Response<ConstructionItems> response)
+            {
+                if (!response.isSuccessful())
+                {
+                    Toasty.error(SplashScreenActivity.this, "Error Code: " +response.code(),Toasty.LENGTH_SHORT,true).show();
+                    startActivity(new Intent(SplashScreenActivity.this, GoToLoginRegisterActivity.class));
+                }
+
+                ConstructionItems constructionItems = response.body();
+
+                constructionCode = constructionItems.getError();
+            }
+
+            @Override
+            public void onFailure(Call<ConstructionItems> call, Throwable t)
+            {
+
+            }
+        });
+
+        return constructionCode;
     }
 }

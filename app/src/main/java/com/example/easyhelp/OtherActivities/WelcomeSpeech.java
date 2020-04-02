@@ -49,7 +49,7 @@ public class WelcomeSpeech extends AppCompatActivity {
         retrofit = new Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(GsonConverterFactory.create()).build();
         placeHolderAPI = retrofit.create(PlaceHolderAPI.class);
 
-        Call<WelcomeSpeechAPIElements> call = placeHolderAPI.createPost(1);
+        Call<WelcomeSpeechAPIElements> call = placeHolderAPI.getWelcomeSpeech(1);
 
         call.enqueue(new Callback<WelcomeSpeechAPIElements>() {
             @Override
