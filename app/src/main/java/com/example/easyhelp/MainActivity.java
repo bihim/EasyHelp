@@ -46,10 +46,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*if (construction() == 0)
+        if (construction() == 1)
         {
             startActivity(new Intent(this, ConstructionActivity.class));
-        }*/
+        }
 
         //default fragment which is home
         if (savedInstanceState == null)
