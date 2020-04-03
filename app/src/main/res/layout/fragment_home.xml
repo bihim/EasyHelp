@@ -72,18 +72,21 @@
                                 android:layout_marginBottom="5dp"/>
 
                             <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/profile_card_name"
                                 android:text="Zubaer Alam Bihim"
                                 android:textColor="#FFF"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"/>
 
                             <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/profile_card_category"
                                 android:text="Android App Developer"
                                 android:textColor="#FFF"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"/>
 
                             <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/profile_card_number"
                                 android:text="01911911088"
                                 android:textColor="#FFF"
                                 android:layout_width="wrap_content"

@@ -1,11 +1,17 @@
 package com.example.easyhelp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 
@@ -17,8 +23,10 @@ import com.example.easyhelp.Fragment.BloodFragment;
 import com.example.easyhelp.Fragment.HomeFragment;
 import com.example.easyhelp.Fragment.MessageFragment;
 import com.example.easyhelp.Fragment.NewsFragment;
+import com.example.easyhelp.OtherActivities.ChangePasswordActivity;
 import com.example.easyhelp.OtherActivities.ConstructionActivity;
 import com.example.easyhelp.OtherActivities.GoToLoginRegisterActivity;
+import com.example.easyhelp.OtherActivities.LoginActivity;
 import com.example.easyhelp.OtherActivities.SplashScreenActivity;
 import com.gauravk.bubblenavigation.BubbleNavigationLinearView;
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
@@ -38,13 +46,18 @@ public class MainActivity extends AppCompatActivity {
     Retrofit retrofit;
     String baseUrl = new BaseUrl().baseUrl;
     int constructionCode;
-
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
+    MaterialToolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        toolbar = findViewById(R.id.toolbar_main);
+        setSupportActionBar(toolbar);
 
         if (construction() == 1)
         {
@@ -132,5 +145,54 @@ public class MainActivity extends AppCompatActivity {
         });
 
         return constructionCode;
+    }
+
+    private void signout()
+    {
+        preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+        editor = preferences.edit();
+
+        editor.putString("user_name", null);
+        editor.putString("password", null);
+        editor.putString("category", null);
+        editor.putString("id", null);
+        editor.putString("name", null);
+        editor.putString("user_catagory", null);
+        editor.putString("catagory_type", null);
+        editor.putString("mobile", null);
+        editor.putString("address", null);
+        editor.putString("image_url", null);
+        editor.putString("institute_name", null);
+        editor.commit();
+        startActivity(new Intent(this, GoToLoginRegisterActivity.class));
+        finish();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_activity_menu_item, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item)
+    {
+        switch (item.getItemId())
+        {
+            case R.id.change_password:
+                startActivity(new Intent(this, ChangePasswordActivity.class));
+                return true;
+
+            case R.id.signout:
+                signout();
+                startActivity(new Intent(this, GoToLoginRegisterActivity.class));
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
     }
 }

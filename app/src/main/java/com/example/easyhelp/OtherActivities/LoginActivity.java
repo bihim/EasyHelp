@@ -44,8 +44,10 @@ public class LoginActivity extends AppCompatActivity
     PlaceHolderAPI placeHolderAPI;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
+    Button gotoRegisterLoginButton;
     String[] professionName = {"Helper/General People", "Lawyer", "Journalist", "Police"};
     int[] icons = {R.drawable.ic_general, R.drawable.ic_lawyer, R.drawable.ic_journalist, R.drawable.ic_policeman};
+    String selectedItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,6 +121,14 @@ public class LoginActivity extends AppCompatActivity
             }
         });
 
+        gotoRegisterLoginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(LoginActivity.this, GoToLoginRegisterActivity.class));
+            }
+        });
+
     }
 
     private void findViewByIDAll()
@@ -127,6 +137,7 @@ public class LoginActivity extends AppCompatActivity
         spinner = findViewById(R.id.login_spinner);
         userName = findViewById(R.id.login_user_name);
         password = findViewById(R.id.login_password);
+        gotoRegisterLoginButton = findViewById(R.id.go_to_login_register_activity);
     }
 
     private void customSpinnerSet()
@@ -135,7 +146,8 @@ public class LoginActivity extends AppCompatActivity
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
-
+                selectedItem = professionName[parent.getSelectedItemPosition()];
+                Log.d("CUSTOMSPINNER", "onItemSelected: "+selectedItem);
             }
 
             @Override

@@ -32,4 +32,6 @@
     <color name="register_button_gradient_end_color">#F2C94C</color>
 
     <color name="recyclerViewBackground">#B7B7B7</color>
+
+    <color name="change_password_color">#d35400</color>
 </resources>
