@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.example.easyhelp.API.BaseUrl;
 import com.example.easyhelp.API.PlaceHolderAPI;
+import com.example.easyhelp.CustomDialog.CustomDialog;
 import com.example.easyhelp.R;
 import com.example.easyhelp.WelcomeSpeechThing.WelcomeSpeechAPIElements;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -28,6 +29,7 @@ public class WelcomeSpeech extends AppCompatActivity {
     Retrofit retrofit;
     PlaceHolderAPI placeHolderAPI;
     TextView welcomeSpeechTextView;
+    CustomDialog customDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class WelcomeSpeech extends AppCompatActivity {
         findViewByIdDeclare();
         toolBarMethod(R.id.toolbar_welcome_speech,"Welcome User");
         baseUrl = new BaseUrl().baseUrl;
+        customDialog = new CustomDialog(this);
         getSpeech();
     }
 
@@ -46,6 +49,7 @@ public class WelcomeSpeech extends AppCompatActivity {
 
     private void getSpeech()
     {
+        customDialog.showDialog();
         retrofit = new Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(GsonConverterFactory.create()).build();
         placeHolderAPI = retrofit.create(PlaceHolderAPI.class);
 
@@ -57,10 +61,12 @@ public class WelcomeSpeech extends AppCompatActivity {
             {
                 if (!response.isSuccessful())
                 {
+                    customDialog.hideDialog();
                     Toast.makeText(WelcomeSpeech.this, "Error Code: "+response.code(), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
+                customDialog.hideDialog();
                 WelcomeSpeechAPIElements welcomeSpeechAPIElements = response.body();
 
                 welcomeSpeechTextView.setText(welcomeSpeechAPIElements.getMy_speech());
@@ -70,6 +76,7 @@ public class WelcomeSpeech extends AppCompatActivity {
             @Override
             public void onFailure(Call<WelcomeSpeechAPIElements> call, Throwable t)
             {
+                customDialog.hideDialog();
                 Toast.makeText(WelcomeSpeech.this, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

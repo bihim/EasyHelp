@@ -2,8 +2,11 @@ package com.example.easyhelp.OtherActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -16,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.easyhelp.API.BaseUrl;
 import com.example.easyhelp.API.PlaceHolderAPI;
+import com.example.easyhelp.CustomDialog.CustomDialog;
 import com.example.easyhelp.CustomSpinner.CustomSpinnerAdapter;
 import com.example.easyhelp.LoginThings.LoginAPIElements;
 import com.example.easyhelp.MainActivity;
@@ -48,6 +52,7 @@ public class LoginActivity extends AppCompatActivity
     String[] professionName = {"Helper/General People", "Lawyer", "Journalist", "Police"};
     int[] icons = {R.drawable.ic_general, R.drawable.ic_lawyer, R.drawable.ic_journalist, R.drawable.ic_policeman};
     String selectedItem;
+    CustomDialog customDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +62,8 @@ public class LoginActivity extends AppCompatActivity
         toolBarMethod(R.id.toolbar_login, "Login");
         customSpinnerSet();
         login();
+        threadToast(this);
+
     }
 
     private void login()
@@ -69,55 +76,14 @@ public class LoginActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                Call<LoginAPIElements> call = placeHolderAPI.getLoginInfo1(userName.getText().toString(), password.getText().toString());
-                call.enqueue(new Callback<LoginAPIElements>() {
-                    @Override
-                    public void onResponse(Call<LoginAPIElements> call, Response<LoginAPIElements> response)
-                    {
-                        if (!response.isSuccessful())
-                        {
-                            Toasty.error(LoginActivity.this, "Error Code: " +response.code(),Toasty.LENGTH_SHORT,true).show();
-                        }
-
-                        LoginAPIElements loginAPIElements = response.body();
-
-                        int errorCode = loginAPIElements.getError();
-
-                        Log.d("BaalerLogin", "onResponse: "+loginAPIElements.getError()+loginAPIElements.getError_report());
-
-                        if (errorCode == 1)
-                        {
-                            Toasty.error(LoginActivity.this, "Password or UserName not matched",Toasty.LENGTH_SHORT,true).show();
-                        }
-                        else if (errorCode == 0)
-                        {
-                            preferences = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
-                            editor = preferences.edit();
-
-                            editor.putString("user_name", userName.getText().toString());
-                            editor.putString("password", password.getText().toString());
-                            editor.putString("category", "");
-                            editor.putString("id", loginAPIElements.getId());
-                            editor.putString("name", loginAPIElements.getName());
-                            editor.putString("user_catagory", loginAPIElements.getUser_catagory());
-                            editor.putString("catagory_type", loginAPIElements.getCatagory_type());
-                            editor.putString("mobile", loginAPIElements.getMobile());
-                            editor.putString("address", loginAPIElements.getAddress());
-                            editor.putString("image_url", loginAPIElements.getImage_url());
-                            editor.putString("institute_name", loginAPIElements.getInstitute_name());
-                            editor.commit();
-
-                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                            finish();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<LoginAPIElements> call, Throwable t)
-                    {
-
-                    }
-                });
+                if (isNetWorkConnected())
+                {
+                    loginApiCall();
+                }
+                else
+                {
+                    Toasty.error(LoginActivity.this,"No internet connection is available", Toasty.LENGTH_SHORT, true).show();
+                }
             }
         });
 
@@ -131,6 +97,62 @@ public class LoginActivity extends AppCompatActivity
 
     }
 
+    private void loginApiCall()
+    {
+        customDialog.showDialog();
+        Call<LoginAPIElements> call = placeHolderAPI.getLoginInfo1(userName.getText().toString(), password.getText().toString());
+        call.enqueue(new Callback<LoginAPIElements>() {
+            @Override
+            public void onResponse(Call<LoginAPIElements> call, Response<LoginAPIElements> response)
+            {
+                if (!response.isSuccessful())
+                {
+                    customDialog.hideDialog();
+                    Toasty.error(LoginActivity.this, "Error Code: " +response.code(),Toasty.LENGTH_SHORT,true).show();
+                }
+
+                LoginAPIElements loginAPIElements = response.body();
+
+                int errorCode = loginAPIElements.getError();
+
+                Log.d("BaalerLogin", "onResponse: "+loginAPIElements.getError()+loginAPIElements.getError_report());
+
+                if (errorCode == 1)
+                {
+                    customDialog.hideDialog();
+                    Toasty.error(LoginActivity.this, "Password or UserName not matched",Toasty.LENGTH_SHORT,true).show();
+                }
+                else if (errorCode == 0)
+                {
+                    preferences = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
+                    editor = preferences.edit();
+
+                    editor.putString("user_name", userName.getText().toString());
+                    editor.putString("password", password.getText().toString());
+                    editor.putString("category", "");
+                    editor.putString("id", loginAPIElements.getId());
+                    editor.putString("name", loginAPIElements.getName());
+                    editor.putString("user_catagory", loginAPIElements.getUser_catagory());
+                    editor.putString("catagory_type", loginAPIElements.getCatagory_type());
+                    editor.putString("mobile", loginAPIElements.getMobile());
+                    editor.putString("address", loginAPIElements.getAddress());
+                    editor.putString("image_url", loginAPIElements.getImage_url());
+                    editor.putString("institute_name", loginAPIElements.getInstitute_name());
+                    editor.commit();
+                    customDialog.hideDialog();
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    finish();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LoginAPIElements> call, Throwable t)
+            {
+
+            }
+        });
+    }
+
     private void findViewByIDAll()
     {
         loginButton = findViewById(R.id.login_button);
@@ -138,6 +160,7 @@ public class LoginActivity extends AppCompatActivity
         userName = findViewById(R.id.login_user_name);
         password = findViewById(R.id.login_password);
         gotoRegisterLoginButton = findViewById(R.id.go_to_login_register_activity);
+        customDialog = new CustomDialog(this);
     }
 
     private void customSpinnerSet()
@@ -170,4 +193,68 @@ public class LoginActivity extends AppCompatActivity
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
     }
+
+    /*
+    * Data and Wifi Connectivity checks
+    * Default value is false means no network connected
+    */
+
+    private boolean isNetWorkConnected()
+    {
+        boolean connectedOrNot = false;
+
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        if (activeNetwork != null)
+        {
+            if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI)
+            {
+                connectedOrNot = true;
+            }
+
+            else if (activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE)
+            {
+                connectedOrNot = true;
+            }
+
+        }
+
+        else
+        {
+            connectedOrNot = false;
+        }
+        
+        return connectedOrNot;
+    }
+
+    private void threadToast(Context context)
+    {
+        if (!isNetWorkConnected())
+        {
+            Thread t = new Thread() {
+
+                @Override
+                public void run() {
+                    try {
+                        while (!isInterrupted()) {
+                            Thread.sleep(600000);
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run()
+                                {
+                                    Toasty.error(context,"No net connection is available", Toasty.LENGTH_SHORT, true).show();
+                                }
+                            });
+                        }
+                    } catch (InterruptedException e) {
+                    }
+                }
+            };
+
+
+            t.start();
+        }
+    }
+
+
 }

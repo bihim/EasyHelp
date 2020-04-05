@@ -12,13 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.easyhelp.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileViewHolder>
 {
-    ArrayList<ProfileItem> profileItems;
+    List<ProfileItem> profileItems;
     Context context;
 
-    public ProfileAdapter(ArrayList<ProfileItem> profileItems, Context context)
+    public ProfileAdapter(List<ProfileItem> profileItems, Context context)
     {
         this.profileItems = profileItems;
         this.context = context;

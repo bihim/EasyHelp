@@ -3,6 +3,7 @@ package com.example.easyhelp.API;
 import com.example.easyhelp.ChangePasswordThings.ChangePasswordItems;
 import com.example.easyhelp.ConstructionThings.ConstructionItems;
 import com.example.easyhelp.LoginThings.LoginAPIElements;
+import com.example.easyhelp.Profilethings.ProfileItemAPI;
 import com.example.easyhelp.WelcomeSpeechThing.WelcomeSpeechAPIElements;
 
 import retrofit2.Call;
@@ -48,6 +49,12 @@ public interface PlaceHolderAPI
             @Field("new_password") String newPassword,
             @Field("again_password") String confirmNewPassword
 
+    );
+
+    @FormUrlEncoded
+    @POST("myprofile.php")
+    Call<ProfileItemAPI> getProfileDetails(
+            @Field("user_id") int user_id
     );
 
 
