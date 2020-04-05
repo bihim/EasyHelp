@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -47,7 +49,15 @@ public class SplashScreenActivity extends AppCompatActivity {
             @Override
             public void run()
             {
-                login();
+                if (!isNetWorkConnectedd())
+                {
+                    startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
+                    finish();
+                }
+                else
+                {
+                    login();
+                }
                 finish();
 
             }
@@ -134,5 +144,33 @@ public class SplashScreenActivity extends AppCompatActivity {
         });
 
         return constructionCode;
+    }
+
+    private boolean isNetWorkConnectedd()
+    {
+        boolean connectedOrNot = false;
+
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        if (activeNetwork != null)
+        {
+            if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI)
+            {
+                connectedOrNot = true;
+            }
+
+            else if (activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE)
+            {
+                connectedOrNot = true;
+            }
+
+        }
+
+        else
+        {
+            connectedOrNot = false;
+        }
+
+        return connectedOrNot;
     }
 }

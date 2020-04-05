@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
@@ -58,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.toolbar_main);
         setSupportActionBar(toolbar);
+        threadToast(this);
 
         if (construction() == 1)
         {
@@ -194,5 +198,62 @@ public class MainActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
 
+    }
+
+    private boolean isNetWorkConnectedd()
+    {
+        boolean connectedOrNot = false;
+
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        if (activeNetwork != null)
+        {
+            if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI)
+            {
+                connectedOrNot = true;
+            }
+
+            else if (activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE)
+            {
+                connectedOrNot = true;
+            }
+
+        }
+
+        else
+        {
+            connectedOrNot = false;
+        }
+
+        return connectedOrNot;
+    }
+
+    private void threadToast(Context context)
+    {
+        if (!isNetWorkConnectedd())
+        {
+            Thread t = new Thread() {
+
+                @Override
+                public void run() {
+                    try {
+                        while (!isInterrupted()) {
+                            Thread.sleep(600000);
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run()
+                                {
+                                    Toasty.error(context,"No net connection is available", Toasty.LENGTH_SHORT, true).show();
+                                }
+                            });
+                        }
+                    } catch (InterruptedException e) {
+                    }
+                }
+            };
+
+
+            t.start();
+        }
     }
 }

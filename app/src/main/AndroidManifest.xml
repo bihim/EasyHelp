@@ -12,8 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".OtherActivities.ChangePasswordActivity"
-            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".OtherActivities.OneTimeOnlyActivity"></activity>
+        <activity android:name=".OtherActivities.FacebookCopyLinkUrlActivity" />
+        <activity
+            android:name=".OtherActivities.ChangePasswordActivity"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".OtherActivities.ConstructionActivity" />
         <activity
             android:name=".OtherActivities.WelcomeSpeech"

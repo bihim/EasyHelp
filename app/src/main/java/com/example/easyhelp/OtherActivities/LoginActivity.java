@@ -140,7 +140,7 @@ public class LoginActivity extends AppCompatActivity
                     editor.putString("institute_name", loginAPIElements.getInstitute_name());
                     editor.commit();
                     customDialog.hideDialog();
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    startActivity(new Intent(LoginActivity.this, OneTimeOnlyActivity.class));
                     finish();
                 }
             }

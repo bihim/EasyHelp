@@ -57,7 +57,7 @@ public class ProfileActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle("Profile");
         threadToast(this);
-        if (!isNetWorkConnected())
+        if (!isNetWorkConnectedd())
         {
             Toasty.error(this,"No internet connection is available", Toasty.LENGTH_SHORT, true).show();
         }
@@ -151,7 +151,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                     if (items.getTitle().equals("Facebook"))
                     {
-                        profileItems.add(new ProfileItem("Facebook", items.getDetails()));
+                        profileItems.add(new ProfileItem("Facebook", preferences.getString("facebook_url",null))); //Add fb url
                     }
 
                     if (items.getTitle().equals("Blood Group"))
@@ -218,7 +218,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
-    private boolean isNetWorkConnected()
+    private boolean isNetWorkConnectedd()
     {
         boolean connectedOrNot = false;
 
@@ -248,7 +248,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void threadToast(Context context)
     {
-        if (!isNetWorkConnected())
+        if (!isNetWorkConnectedd())
         {
             Thread t = new Thread() {
 

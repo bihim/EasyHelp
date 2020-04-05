@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -70,41 +72,51 @@ public class ChangePasswordActivity extends AppCompatActivity {
                 String newPassword = editTextNewPassword.getText().toString();
                 String againPassword = editTextConfirmNewPassword.getText().toString();
 
-                Call<ChangePasswordItems> call = placeHolderAPI.getChangePasswordInfo(username,password,oldPassword,newPassword,againPassword);
-                call.enqueue(new Callback<ChangePasswordItems>() {
-                    @Override
-                    public void onResponse(Call<ChangePasswordItems> call, Response<ChangePasswordItems> response)
-                    {
-                        if (!response.isSuccessful())
+                if (isNetWorkConnectedd())
+                {
+                    Call<ChangePasswordItems> call = placeHolderAPI.getChangePasswordInfo(username,password,oldPassword,newPassword,againPassword);
+                    call.enqueue(new Callback<ChangePasswordItems>() {
+                        @Override
+                        public void onResponse(Call<ChangePasswordItems> call, Response<ChangePasswordItems> response)
                         {
-                            Toasty.error(ChangePasswordActivity.this, "Error Code: " +response.code(),Toasty.LENGTH_SHORT,true).show();
+                            if (!response.isSuccessful())
+                            {
+                                Toasty.error(ChangePasswordActivity.this, "Error Code: " +response.code(),Toasty.LENGTH_SHORT,true).show();
+                            }
+
+                            ChangePasswordItems changePasswordItems = response.body();
+
+                            int errorCode = changePasswordItems.getError();
+
+                            if (errorCode == 0)
+                            {
+                                preferences = PreferenceManager.getDefaultSharedPreferences(ChangePasswordActivity.this);
+                                editor = preferences.edit();
+                                editor.putString("password", password);
+                                editor.apply();
+                                Toasty.success(ChangePasswordActivity.this, "Password Successfully Changed", Toasty.LENGTH_SHORT, true).show();
+                            }
+
+                            else if (errorCode == 1)
+                            {
+                                Toasty.error(ChangePasswordActivity.this, "Could not change the password", Toasty.LENGTH_SHORT, true).show();
+                            }
                         }
 
-                        ChangePasswordItems changePasswordItems = response.body();
-
-                        int errorCode = changePasswordItems.getError();
-
-                        if (errorCode == 0)
+                        @Override
+                        public void onFailure(Call<ChangePasswordItems> call, Throwable t)
                         {
-                            preferences = PreferenceManager.getDefaultSharedPreferences(ChangePasswordActivity.this);
-                            editor = preferences.edit();
-                            editor.putString("password", password);
-                            editor.apply();
-                            Toasty.success(ChangePasswordActivity.this, "Password Successfully Changed", Toasty.LENGTH_SHORT, true).show();
+
                         }
+                    });
+                }
 
-                        else if (errorCode == 1)
-                        {
-                            Toasty.error(ChangePasswordActivity.this, "Could not change the password", Toasty.LENGTH_SHORT, true).show();
-                        }
-                    }
+                else
+                {
+                    Toasty.error(ChangePasswordActivity.this, "No Internet Connection Available", Toasty.LENGTH_SHORT, true).show();
+                }
 
-                    @Override
-                    public void onFailure(Call<ChangePasswordItems> call, Throwable t)
-                    {
 
-                    }
-                });
             }
         });
     }
@@ -150,5 +162,33 @@ public class ChangePasswordActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
+    }
+
+    private boolean isNetWorkConnectedd()
+    {
+        boolean connectedOrNot = false;
+
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        if (activeNetwork != null)
+        {
+            if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI)
+            {
+                connectedOrNot = true;
+            }
+
+            else if (activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE)
+            {
+                connectedOrNot = true;
+            }
+
+        }
+
+        else
+        {
+            connectedOrNot = false;
+        }
+
+        return connectedOrNot;
     }
 }
