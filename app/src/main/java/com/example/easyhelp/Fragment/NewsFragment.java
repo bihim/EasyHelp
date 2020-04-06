@@ -41,6 +41,9 @@ public class NewsFragment extends Fragment
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
+        /*This news has pagination
+        * That's it*/
+
         View view = inflater.inflate(R.layout.fragment_news, container, false);
 
         newsRecyclerView = view.findViewById(R.id.news_recycler_view);

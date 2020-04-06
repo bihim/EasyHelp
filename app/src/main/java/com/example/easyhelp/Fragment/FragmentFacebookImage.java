@@ -23,6 +23,14 @@ public class FragmentFacebookImage extends Fragment
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
+
+        /*
+        * This is for facebook url copy tutorial. It will appear once on facebook activity.
+        * This contains screenshot. It has two buttons, one is for next and one is previous.
+        * Check buttonNext for more.
+        * */
+
+
         View view = inflater.inflate(R.layout.fragment_image_view, container, false);
 
         imageView = view.findViewById(R.id.facebook_image_view_fragment);

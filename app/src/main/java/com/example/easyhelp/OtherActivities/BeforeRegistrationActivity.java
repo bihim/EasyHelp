@@ -17,7 +17,10 @@ import androidx.appcompat.widget.Toolbar;
 
 import java.util.ArrayList;
 
-public class BeforeRegistrationActivity extends AppCompatActivity {
+public class BeforeRegistrationActivity extends AppCompatActivity
+{
+
+    /*This activity is for profession choosing. It is complete but registration is incomplete.*/
 
     RecyclerView beforeRegistrationRecyclerView;
     ArrayList<BeforeRegistrationItems> beforeRegistrationItems;

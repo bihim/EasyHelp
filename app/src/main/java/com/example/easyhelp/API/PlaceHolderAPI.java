@@ -13,12 +13,16 @@ import retrofit2.http.POST;
 
 public interface PlaceHolderAPI
 {
+
+
     @FormUrlEncoded
     @POST("welcome_speech.php")
     Call<WelcomeSpeechAPIElements> getWelcomeSpeech(
             @Field("user_id") int user_id
     );
 
+
+    /*Sir didn't gave me api for the category*/
     @FormUrlEncoded
     @POST("login.php")
     Call<LoginAPIElements> getLoginInfo(

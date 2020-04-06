@@ -7,7 +7,10 @@ import android.os.Bundle;
 import com.example.easyhelp.Fragment.FragmentFacebookImage;
 import com.example.easyhelp.R;
 
-public class FacebookCopyLinkUrlActivity extends AppCompatActivity {
+public class FacebookCopyLinkUrlActivity extends AppCompatActivity
+{
+    /*
+    * This is activity for facebook link copy*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -6,7 +6,11 @@ import android.os.Bundle;
 
 import com.example.easyhelp.R;
 
-public class ConstructionActivity extends AppCompatActivity {
+public class ConstructionActivity extends AppCompatActivity
+{
+    /*
+    * This is for construction when server goes down
+    */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

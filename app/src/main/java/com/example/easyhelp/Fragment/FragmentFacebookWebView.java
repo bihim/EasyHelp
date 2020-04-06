@@ -31,6 +31,11 @@ public class FragmentFacebookWebView extends Fragment
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
+        /*This one is for URL copy. It has an webview and a button.
+        * User follows the tutorial and after that clicks on finish button.
+        * Then the link is copied to the sharedpreference because API has not provided yet.
+        * This link goes to ProfilesActivity*/
+
         View view = inflater.inflate(R.layout.fragment_webview, container, false);
 
         webView = view.findViewById(R.id.facebook_webview_fragment);
@@ -52,11 +57,6 @@ public class FragmentFacebookWebView extends Fragment
                         editor.apply();
                         startActivity(new Intent(getActivity(), MainActivity.class));
                         getActivity().finish();
-                        /*Intent intent = new Intent(getActivity(), ProfileActivity.class);
-                        intent.putExtra("url", webView.getUrl());
-                        startActivity(intent);*/
-
-                        //Implement the ula ula here ifty vaia
                     }
                 });
 

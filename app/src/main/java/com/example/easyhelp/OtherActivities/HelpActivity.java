@@ -7,7 +7,9 @@ import android.os.Bundle;
 import com.example.easyhelp.R;
 import com.google.android.material.appbar.MaterialToolbar;
 
-public class HelpActivity extends AppCompatActivity {
+public class HelpActivity extends AppCompatActivity
+{
+    /*This activity is a dummy activity for card and it is not implemented yet*/
 
     MaterialToolbar toolbar;
 

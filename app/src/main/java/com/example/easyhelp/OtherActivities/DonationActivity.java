@@ -9,6 +9,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 
 public class DonationActivity extends AppCompatActivity {
 
+    /*This activity is a dummy activity for card and it is not implemented yet*/
 
     MaterialToolbar toolbar;
 

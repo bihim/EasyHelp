@@ -26,4 +26,8 @@ public class BeforeRegistrationItems
     public void setProfessionName(String professionName) {
         this.professionName = professionName;
     }
+
+
+    /*
+    * This is for registration professions with icons*/
 }

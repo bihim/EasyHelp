@@ -12,7 +12,13 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTube
 
 import life.sabujak.roundedbutton.RoundedButton;
 
-public class GoToLoginRegisterActivity extends AppCompatActivity {
+public class GoToLoginRegisterActivity extends AppCompatActivity
+{
+
+    /*
+    * This triggers when a user is not logged in.
+    * This one has lottie animation, youtube video
+    */
 
     RoundedButton registration, login;
 

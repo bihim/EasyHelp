@@ -22,4 +22,6 @@ public class AdvertisementFragment extends Fragment
 
         return view;
     }
+
+    /*These fragments are not implemented yet. These are from MainActivity.java bottom navigationbar classes*/
 }

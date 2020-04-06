@@ -8,4 +8,6 @@ public class BaseUrl
     {
         this.baseUrl = "http://101bd.com/easyhelper/api/";
     }
+
+    /*Base url for the api*/
 }

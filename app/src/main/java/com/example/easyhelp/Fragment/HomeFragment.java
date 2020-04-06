@@ -42,22 +42,51 @@ public class HomeFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
+    {
+        /*
+        * This fragment contains 5 cards, one big round button, one edittext and other things.
+        * Profile card's text has been set from sharedpreference.
+        * It has 3 method. One is for all find view by id, one is for cardview click, and last one is for setting profile card text.
+        * This needs more tweaks. Coming soon*/
+
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        roundedButton = view.findViewById(R.id.help_button);
-        profileCardView = view.findViewById(R.id.profile_card);
-        balanceCardView = view.findViewById(R.id.wallet_card);
-        helpCardView = view.findViewById(R.id.help_card);
-        donationCardView = view.findViewById(R.id.donate_card);
-        welcomeSpeech = view.findViewById(R.id.welcome_speech);
-        helpButtonEdittext = view.findViewById(R.id.help_edittext);
-        textViewProfileCardName = view.findViewById(R.id.profile_card_name);
-        textViewProfileCardCategory = view.findViewById(R.id.profile_card_category);
-        textViewProfileCardNumber = view.findViewById(R.id.profile_card_number);
-
+        findViewByAll(view);
         profileDetailsONCard();
+        cardViewClick();
 
+        roundedButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+
+                if(helpButtonEdittext.getText().toString().isEmpty())
+                {
+                    Toast.makeText(getActivity(), "Help is sending", Toast.LENGTH_SHORT).show();
+                }
+
+                else
+                {
+                    Toast.makeText(getActivity(), helpButtonEdittext.getText().toString()+" is sending", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
+        return view;
+    }
+
+    private void profileDetailsONCard()
+    {
+        preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        textViewProfileCardName.setText(preferences.getString("name",null));
+        textViewProfileCardCategory.setText(preferences.getString("user_catagory",null));
+        textViewProfileCardNumber.setText(preferences.getString("mobile",null));
+    }
+
+    private void cardViewClick()
+    {
         profileCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -98,35 +127,19 @@ public class HomeFragment extends Fragment {
                 startActivity(new Intent(getActivity(), WelcomeSpeech.class));
             }
         });
-
-
-
-        roundedButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-
-                if(helpButtonEdittext.getText().toString().isEmpty())
-                {
-                    Toast.makeText(getActivity(), "Help is sending", Toast.LENGTH_SHORT).show();
-                }
-
-                else
-                {
-                    Toast.makeText(getActivity(), helpButtonEdittext.getText().toString()+" is sending", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-
-        return view;
     }
 
-    private void profileDetailsONCard()
+    private void findViewByAll(View view)
     {
-        preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        textViewProfileCardName.setText(preferences.getString("name",null));
-        textViewProfileCardCategory.setText(preferences.getString("user_catagory",null));
-        textViewProfileCardNumber.setText(preferences.getString("mobile",null));
+        roundedButton = view.findViewById(R.id.help_button);
+        profileCardView = view.findViewById(R.id.profile_card);
+        balanceCardView = view.findViewById(R.id.wallet_card);
+        helpCardView = view.findViewById(R.id.help_card);
+        donationCardView = view.findViewById(R.id.donate_card);
+        welcomeSpeech = view.findViewById(R.id.welcome_speech);
+        helpButtonEdittext = view.findViewById(R.id.help_edittext);
+        textViewProfileCardName = view.findViewById(R.id.profile_card_name);
+        textViewProfileCardCategory = view.findViewById(R.id.profile_card_category);
+        textViewProfileCardNumber = view.findViewById(R.id.profile_card_number);
     }
 }

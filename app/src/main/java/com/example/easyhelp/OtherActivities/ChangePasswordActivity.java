@@ -31,6 +31,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ChangePasswordActivity extends AppCompatActivity {
 
+    /*
+    * This activity is located on toolbar menu of MainActivity.
+    * This activity contains bunch of edittext and a custom spinner for choosing profession aka category.
+    * This one takes old password 2 times and new password 2 times.
+    * I forgot to add custom loading dialog. Will add soon.
+    */
+
     MaterialToolbar toolbar;
     String baseUrl = new BaseUrl().baseUrl;
     Retrofit retrofit;
