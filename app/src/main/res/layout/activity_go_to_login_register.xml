@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:orientation="vertical"
-    android:weightSum="1"
-    android:background="@drawable/gradient_background"
     tools:context=".OtherActivities.GoToLoginRegisterActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:weightSum="1"
+        android:background="@drawable/gradient_background">
 
     <TextView
         android:id="@+id/easy_helper_textview"
-        android:layout_weight="0.1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:text="Easy Helper"
         android:textStyle="bold"
         android:textColor="@color/white"
@@ -22,18 +26,19 @@
         android:textSize="40sp"/>
 
     <LinearLayout
-        android:layout_weight="0.2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="450dp"
         android:orientation="vertical"
         android:background="@drawable/rounded_background"
         android:gravity="center_horizontal"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp">
+        android:layout_marginEnd="20dp"
+        android:weightSum="1">
 
         <com.airbnb.lottie.LottieAnimationView
+            android:layout_weight="0.5"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:scaleType="centerCrop"
             android:layout_marginTop="10dp"
             app:lottie_autoPlay="true"
@@ -42,9 +47,10 @@
             app:lottie_speed="0.2"/>
 
         <life.sabujak.roundedbutton.RoundedButton
+            android:layout_weight="0.23"
             android:id="@+id/go_to_login"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="0dp"
             android:layout_margin="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
@@ -59,11 +65,12 @@
 
         <life.sabujak.roundedbutton.RoundedButton
             android:id="@+id/go_to_register"
+            android:layout_weight="0.23"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_margin="10dp"
+            android:layout_height="0dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             app:buttonGradientStartColor="@color/register_button_gradient_start_color"
             app:buttonGradientEndColor="@color/login_button_gradient_end_color"
             android:text="Register"
@@ -77,12 +84,13 @@
 
     <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
         android:id="@+id/youtube_player_view"
-        android:layout_weight="0.5"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="300dp"
         app:videoId="i9CBKGLVCME"
         app:autoPlay="true"
         app:showFullScreenButton="true"
         android:layout_margin="20dp"/>
 
-</LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

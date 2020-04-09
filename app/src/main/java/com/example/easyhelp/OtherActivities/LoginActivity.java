@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.easyhelp.API.BaseUrl;
@@ -53,16 +54,29 @@ public class LoginActivity extends AppCompatActivity
     int[] icons = {R.drawable.ic_general, R.drawable.ic_lawyer, R.drawable.ic_journalist, R.drawable.ic_policeman};
     String selectedItem;
     CustomDialog customDialog;
+    TextView loginText;
+    String registrationText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         findViewByIDAll();
-        toolBarMethod(R.id.toolbar_login, "Login");
         customSpinnerSet();
         login();
         threadToast(this);
+        Intent intent = getIntent();
+        registrationText = intent.getStringExtra("login");
+
+        if (registrationText.isEmpty())
+        {
+            loginText.setText("LOGIN");
+        }
+        else
+        {
+            loginText.setText(registrationText);
+        }
+
 
     }
 
@@ -76,7 +90,12 @@ public class LoginActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                if (isNetWorkConnected())
+                if(userName.getText().toString().isEmpty() || password.getText().toString().isEmpty())
+                {
+                    Toasty.error(LoginActivity.this,"Username or password is empty", Toasty.LENGTH_SHORT, true).show();
+                }
+
+                else if (isNetWorkConnected())
                 {
                     loginApiCall();
                 }
@@ -99,8 +118,10 @@ public class LoginActivity extends AppCompatActivity
 
     private void loginApiCall()
     {
+
         customDialog.showDialog();
-        Call<LoginAPIElements> call = placeHolderAPI.getLoginInfo1(userName.getText().toString(), password.getText().toString());
+        Log.d("CUSTOMSPINNER", "onItemSelected: "+selectedItem);
+        Call<LoginAPIElements> call = placeHolderAPI.getLoginInfo(userName.getText().toString(), password.getText().toString(),selectedItem);
         call.enqueue(new Callback<LoginAPIElements>() {
             @Override
             public void onResponse(Call<LoginAPIElements> call, Response<LoginAPIElements> response)
@@ -129,7 +150,7 @@ public class LoginActivity extends AppCompatActivity
 
                     editor.putString("user_name", userName.getText().toString());
                     editor.putString("password", password.getText().toString());
-                    editor.putString("category", "");
+                    editor.putString("category", selectedItem);
                     editor.putString("id", loginAPIElements.getId());
                     editor.putString("name", loginAPIElements.getName());
                     editor.putString("user_catagory", loginAPIElements.getUser_catagory());
@@ -153,6 +174,7 @@ public class LoginActivity extends AppCompatActivity
         });
     }
 
+
     private void findViewByIDAll()
     {
         loginButton = findViewById(R.id.login_button);
@@ -161,6 +183,7 @@ public class LoginActivity extends AppCompatActivity
         password = findViewById(R.id.login_password);
         gotoRegisterLoginButton = findViewById(R.id.go_to_login_register_activity);
         customDialog = new CustomDialog(this);
+        loginText = findViewById(R.id.login_text);
     }
 
     private void customSpinnerSet()
@@ -170,7 +193,6 @@ public class LoginActivity extends AppCompatActivity
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
                 selectedItem = professionName[parent.getSelectedItemPosition()];
-                Log.d("CUSTOMSPINNER", "onItemSelected: "+selectedItem);
             }
 
             @Override

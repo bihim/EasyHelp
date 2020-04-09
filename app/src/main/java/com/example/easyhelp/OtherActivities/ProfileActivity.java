@@ -184,16 +184,6 @@ public class ProfileActivity extends AppCompatActivity {
                         profileItems.add(new ProfileItem("Address", items.getDetails()));
                     }
 
-                    if (items.getTitle().equals("Father Name"))
-                    {
-                        profileItems.add(new ProfileItem("Father Name", items.getDetails()));
-                    }
-
-                    if (items.getTitle().equals("Father Name"))
-                    {
-                        profileItems.add(new ProfileItem("Father Name", items.getDetails()));
-                    }
-
                     //16 Items
                 }
 

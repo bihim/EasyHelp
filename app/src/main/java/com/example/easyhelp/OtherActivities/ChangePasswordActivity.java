@@ -73,15 +73,21 @@ public class ChangePasswordActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
+                preferences = PreferenceManager.getDefaultSharedPreferences(ChangePasswordActivity.this);
                 String username = editTextUserName.getText().toString();
                 String password = editTextOldPassword.getText().toString();
                 String oldPassword = editTextOldPassword.getText().toString();
                 String newPassword = editTextNewPassword.getText().toString();
                 String againPassword = editTextConfirmNewPassword.getText().toString();
 
-                if (isNetWorkConnectedd())
+                if (password.isEmpty() || oldPassword.isEmpty() || newPassword.isEmpty() || againPassword.isEmpty())
                 {
-                    Call<ChangePasswordItems> call = placeHolderAPI.getChangePasswordInfo(username,password,oldPassword,newPassword,againPassword);
+                    Toasty.error(ChangePasswordActivity.this, "Password is empty", Toasty.LENGTH_SHORT, true).show();
+                }
+
+                else if (isNetWorkConnectedd())
+                {
+                    Call<ChangePasswordItems> call = placeHolderAPI.getChangePasswordInfo(preferences.getString("user_name",null),password,oldPassword,newPassword,againPassword);
                     call.enqueue(new Callback<ChangePasswordItems>() {
                         @Override
                         public void onResponse(Call<ChangePasswordItems> call, Response<ChangePasswordItems> response)
@@ -97,7 +103,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
                             if (errorCode == 0)
                             {
-                                preferences = PreferenceManager.getDefaultSharedPreferences(ChangePasswordActivity.this);
+
                                 editor = preferences.edit();
                                 editor.putString("password", password);
                                 editor.apply();

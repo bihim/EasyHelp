@@ -37,6 +37,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     String baseUrl;
     String userName;
     String password;
+    String category;
     int constructionCode;
 
     @Override
@@ -72,6 +73,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         userName = preferences.getString("user_name", null);
         password = preferences.getString("password", null);
+        category = preferences.getString("category", null);
 
         if (userName == null && password == null)
         {
@@ -84,7 +86,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             retrofit = new Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(GsonConverterFactory.create()).build();
             placeHolderAPI = retrofit.create(PlaceHolderAPI.class);
 
-            Call<LoginAPIElements> call = placeHolderAPI.getLoginInfo1(userName, password);
+            Call<LoginAPIElements> call = placeHolderAPI.getLoginInfo(userName, password, category);
             call.enqueue(new Callback<LoginAPIElements>() {
                 @Override
                 public void onResponse(Call<LoginAPIElements> call, Response<LoginAPIElements> response)

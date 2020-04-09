@@ -4,6 +4,7 @@ import com.example.easyhelp.ChangePasswordThings.ChangePasswordItems;
 import com.example.easyhelp.ConstructionThings.ConstructionItems;
 import com.example.easyhelp.LoginThings.LoginAPIElements;
 import com.example.easyhelp.Profilethings.ProfileItemAPI;
+import com.example.easyhelp.RegistrationThings.RegistrationItems;
 import com.example.easyhelp.WelcomeSpeechThing.WelcomeSpeechAPIElements;
 
 import retrofit2.Call;
@@ -21,21 +22,12 @@ public interface PlaceHolderAPI
             @Field("user_id") int user_id
     );
 
-
-    /*Sir didn't gave me api for the category*/
     @FormUrlEncoded
     @POST("login.php")
     Call<LoginAPIElements> getLoginInfo(
             @Field("user_name") String user_name,
             @Field("password") String password,
             @Field("category") String category
-    );
-
-    @FormUrlEncoded
-    @POST("login.php")
-    Call<LoginAPIElements> getLoginInfo1(
-            @Field("user_name") String user_name,
-            @Field("password") String password
     );
 
     @FormUrlEncoded
@@ -59,6 +51,25 @@ public interface PlaceHolderAPI
     @POST("myprofile.php")
     Call<ProfileItemAPI> getProfileDetails(
             @Field("user_id") int user_id
+    );
+
+    @FormUrlEncoded
+    @POST("join.php")
+    Call<RegistrationItems> getRegistration(
+            @Field("mobile") String mobile,
+            @Field("category") String category,
+            @Field("referral_id") String referral_id,
+            @Field("first_password") String first_password,
+            @Field("re_password") String re_password,
+            @Field("name") String name,
+            @Field("email") String email,
+            @Field("nid") String nid,
+            @Field("country") String country,
+            @Field("division") String division,
+            @Field("district") String district,
+            @Field("ps") String ps,
+            @Field("blood") String blood,
+            @Field("address") String address
     );
 
 

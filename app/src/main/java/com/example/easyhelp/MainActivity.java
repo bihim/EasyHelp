@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -73,6 +74,9 @@ public class MainActivity extends AppCompatActivity {
         {
             getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new HomeFragment()).commit();
         }
+
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.welcome);
+        mediaPlayer.start();
 
 
         //view id

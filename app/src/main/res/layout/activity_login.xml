@@ -5,14 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center_horizontal"
+    android:gravity="center"
+    android:background="#FFF"
     tools:context=".OtherActivities.LoginActivity">
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar_login"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"/>
+        android:layout_height="?attr/actionBarSize"
+        android:visibility="gone"/>
 
     <TextView
+        android:id="@+id/login_text"
         android:text="LOGIN"
         android:textColor="@color/login_button_gradient_start_color"
         android:textSize="60sp"
@@ -36,7 +39,7 @@
             android:id="@+id/login_user_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter Username"/>
+            android:hint="Enter Mobile"/>
     </ss.anoop.awesometextinputlayout.AwesomeTextInputLayout>
 
     <ss.anoop.awesometextinputlayout.AwesomeTextInputLayout

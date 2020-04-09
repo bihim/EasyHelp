@@ -22,14 +22,12 @@
             android:name=".OtherActivities.WelcomeSpeech"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".OtherActivities.LoginActivity"
-            android:parentActivityName=".OtherActivities.GoToLoginRegisterActivity" />
+            android:name=".OtherActivities.LoginActivity"/>
         <activity
             android:name=".OtherActivities.BeforeRegistrationActivity"
             android:parentActivityName=".OtherActivities.GoToLoginRegisterActivity" />
         <activity
-            android:name=".OtherActivities.RegistrationActivity"
-            android:parentActivityName=".OtherActivities.BeforeRegistrationActivity" />
+            android:name=".OtherActivities.RegistrationActivity"/>
         <activity android:name=".OtherActivities.GoToLoginRegisterActivity" />
         <activity android:name=".OtherActivities.SplashScreenActivity">
             <intent-filter>
