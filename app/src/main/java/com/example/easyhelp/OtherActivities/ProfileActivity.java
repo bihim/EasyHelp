@@ -1,17 +1,21 @@
 package com.example.easyhelp.OtherActivities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.easyhelp.API.BaseUrl;
 import com.example.easyhelp.API.PlaceHolderAPI;
@@ -24,7 +28,6 @@ import com.example.easyhelp.R;
 import com.google.android.material.appbar.MaterialToolbar;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import es.dmoral.toasty.Toasty;
@@ -32,7 +35,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.Retrofit.Builder;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -46,6 +48,9 @@ public class ProfileActivity extends AppCompatActivity {
     PlaceHolderAPI placeHolderAPI;
     SharedPreferences preferences;
     CustomDialog customDialog;
+    Button logoutButton;
+    TextView toolbarText;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +60,9 @@ public class ProfileActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle("Profile");
+        logoutButton = findViewById(R.id.profile_toolbar_logout_button);
+        toolbarText = findViewById(R.id.profile_toolbar_text);
+        toolbarText.setText("Profile");
         threadToast(this);
         if (!isNetWorkConnectedd())
         {
@@ -85,7 +92,7 @@ public class ProfileActivity extends AppCompatActivity {
             {
                 if (!response.isSuccessful())
                 {
-                    Toast.makeText(ProfileActivity.this, "Error Code: "+response.code(), Toast.LENGTH_SHORT).show();
+                    Toasty.error(ProfileActivity.this, "Error Code: "+response.code(), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -112,6 +119,7 @@ public class ProfileActivity extends AppCompatActivity {
                     if (items.getTitle().equals("Name"))
                     {
                         profileItems.add(new ProfileItem("Name", items.getDetails()));
+                        toolbarText.setText(items.getDetails()+"'s Profile");
                     }
 
                     if (items.getTitle().equals("Mobile"))
@@ -206,6 +214,14 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                signout();
+            }
+        });
+
     }
 
     private boolean isNetWorkConnectedd()
@@ -232,6 +248,7 @@ public class ProfileActivity extends AppCompatActivity {
         {
             connectedOrNot = false;
         }
+
 
         return connectedOrNot;
     }
@@ -263,6 +280,29 @@ public class ProfileActivity extends AppCompatActivity {
 
             t.start();
         }
+    }
+
+    private void signout()
+    {
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        editor = preferences.edit();
+
+        editor.putString("user_name", null);
+        editor.putString("password", null);
+        editor.putString("category", null);
+        editor.putString("id", null);
+        editor.putString("name", null);
+        editor.putString("user_catagory", null);
+        editor.putString("catagory_type", null);
+        editor.putString("mobile", null);
+        editor.putString("address", null);
+        editor.putString("image_url", null);
+        editor.putString("institute_name", null);
+        editor.putString("facebook_url", null);
+        editor.putBoolean("facebook_done", false);
+        editor.commit();
+        startActivity(new Intent(this, GoToLoginRegisterActivity.class));
+        finish();
     }
 
 }

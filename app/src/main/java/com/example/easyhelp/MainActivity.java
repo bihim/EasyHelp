@@ -13,6 +13,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,6 +22,8 @@ import android.view.WindowManager;
 
 import com.example.easyhelp.API.BaseUrl;
 import com.example.easyhelp.API.PlaceHolderAPI;
+import com.example.easyhelp.BloodThings.BloodList;
+import com.example.easyhelp.BloodThings.BloodReportListAPI;
 import com.example.easyhelp.ConstructionThings.ConstructionItems;
 import com.example.easyhelp.Fragment.AdvertisementFragment;
 import com.example.easyhelp.Fragment.BloodFragment;
@@ -35,6 +38,8 @@ import com.example.easyhelp.OtherActivities.SplashScreenActivity;
 import com.gauravk.bubblenavigation.BubbleNavigationLinearView;
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
 import com.google.android.material.appbar.MaterialToolbar;
+
+import java.util.List;
 
 import es.dmoral.toasty.Toasty;
 import retrofit2.Call;
@@ -53,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     MaterialToolbar toolbar;
+    int bloodCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -81,8 +87,6 @@ public class MainActivity extends AppCompatActivity {
 
         //view id
         bubbleNavigationLinearView = findViewById(R.id.bottom_navigation_view_linear);
-
-
 
         bubbleNavigationLinearView.setNavigationChangeListener(new BubbleNavigationChangeListener()
         {
@@ -120,7 +124,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        bubbleNavigationLinearView.setBadgeValue(3,"200");
+        //bubbleNavigationLinearView.setBadgeValue(4,String.valueOf(getBloodCount()));
+        getBloodCount();
+
+        Intent intent = getIntent();
+
+        String getFragment = intent.getStringExtra("id");
+
+        if (getFragment!=null)
+        {
+            if (getFragment.equals("4"))
+            {
+                bubbleNavigationLinearView.setCurrentActiveItem(4);
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new BloodFragment()).commit();
+            }
+        }
     }
 
     private int construction()
@@ -259,5 +277,39 @@ public class MainActivity extends AppCompatActivity {
 
             t.start();
         }
+    }
+
+    private void getBloodCount()
+    {
+        baseUrl = new BaseUrl().baseUrl;
+        retrofit = new Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(GsonConverterFactory.create()).build();
+        placeHolderAPI = retrofit.create(PlaceHolderAPI.class);
+
+        Call<BloodReportListAPI> call = placeHolderAPI.getBloodList(1);
+
+        call.enqueue(new Callback<BloodReportListAPI>() {
+            @Override
+            public void onResponse(Call<BloodReportListAPI> call, Response<BloodReportListAPI> response)
+            {
+                BloodReportListAPI bloodReportListAPI = response.body();
+
+                int errorCode = bloodReportListAPI.getError();
+
+                if(errorCode == 0)
+                {
+                    List<BloodList> bloodReportLists = bloodReportListAPI.getBlood_list();
+                    bloodCount = bloodReportLists.size();
+                    bubbleNavigationLinearView.setBadgeValue(4,String.valueOf(bloodCount));
+                    Log.d("BAALERBLOODCOUNT", "onResponse: "+bloodCount);
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<BloodReportListAPI> call, Throwable t) {
+
+            }
+        });
+
     }
 }

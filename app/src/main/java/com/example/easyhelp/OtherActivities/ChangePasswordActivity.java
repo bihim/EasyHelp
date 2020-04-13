@@ -44,7 +44,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     PlaceHolderAPI placeHolderAPI;
-    EditText editTextUserName, editTextOldPassword, editTextConfirmOldPassword, editTextNewPassword, editTextConfirmNewPassword;
+    EditText editTextUserName, editTextOldPassword, editTextNewPassword, editTextConfirmNewPassword;
     RoundedButton buttonSubmit;
     Spinner spinner;
     String[] professionName = {"Helper/General People", "Lawyer", "Journalist", "Police"};
@@ -157,7 +157,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
     private void findViewByAll()
     {
         editTextOldPassword = findViewById(R.id.change_password_password);
-        editTextConfirmOldPassword = findViewById(R.id.change_password_old_password);
+        //editTextConfirmOldPassword = findViewById(R.id.change_password_old_password);
         editTextNewPassword = findViewById(R.id.change_password_new_password);
         editTextConfirmNewPassword = findViewById(R.id.change_password_again_password);
         spinner = findViewById(R.id.change_password_spinner);

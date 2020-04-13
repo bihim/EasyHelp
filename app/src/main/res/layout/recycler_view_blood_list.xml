@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+    android:elevation="6dp"
+    android:layout_margin="15dp">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_weight="0.2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID"
+                android:textColor="@color/blood_request_start_color"
+                android:textSize="28sp"/>
+
+            <TextView
+                android:id="@+id/recycler_view_blood_report_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:textSize="28sp"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#80000000"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"/>
+
+        <LinearLayout
+            android:layout_weight="0.8"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/recycler_view_blood_report_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="My Dear, i need emergency O+ blood."
+                android:textColor="#000"/>
+
+            <TextView
+                android:id="@+id/recycler_view_blood_report_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MD.Johirul Islam(Masum Billah)"
+                android:textColor="#000"/>
+
+            <TextView
+                android:id="@+id/recycler_view_blood_report_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01911911088"
+                android:textColor="#000"/>
+
+            <TextView
+                android:id="@+id/recycler_view_blood_report_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Member"
+                android:textColor="#000"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</androidx.cardview.widget.CardView>

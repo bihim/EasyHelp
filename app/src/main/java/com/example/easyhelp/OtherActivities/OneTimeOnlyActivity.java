@@ -9,6 +9,7 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.easyhelp.MainActivity;
 import com.example.easyhelp.R;
 
 public class OneTimeOnlyActivity extends AppCompatActivity {
@@ -24,13 +25,23 @@ public class OneTimeOnlyActivity extends AppCompatActivity {
         Button button = findViewById(R.id.facebook_button_start);
 
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                startActivity(new Intent(OneTimeOnlyActivity.this, FacebookCopyLinkUrlActivity.class));
-                finish();
-            }
-        });
+        boolean facebookAvailable = preferences.getBoolean("facebook_done", false);
+        if (facebookAvailable)
+        {
+            startActivity(new Intent(OneTimeOnlyActivity.this, MainActivity.class));
+            finish();
+        }
+
+        else
+        {
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v)
+                {
+                    startActivity(new Intent(OneTimeOnlyActivity.this, FacebookCopyLinkUrlActivity.class));
+                    finish();
+                }
+            });
+        }
     }
 }

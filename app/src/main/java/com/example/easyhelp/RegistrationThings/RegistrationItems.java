@@ -2,7 +2,6 @@ package com.example.easyhelp.RegistrationThings;
 
 public class RegistrationItems
 {
-    private String id;
     private int error;
     private String error_report;
 
@@ -22,11 +21,4 @@ public class RegistrationItems
         this.error_report = error_report;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 }

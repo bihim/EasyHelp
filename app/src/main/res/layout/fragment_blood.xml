@@ -1,15 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center">
+    android:gravity="center_horizontal"
+    android:weightSum="1">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/blood_recycler_view"
+        android:layout_weight="0.9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="#EFEEEE"
+        android:visibility="gone"/>
 
-    <TextView
-        android:text="This is blood"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <me.ibrahimsn.lib.CirclesLoadingView
+        android:id="@+id/recycler_view_blood_report_progressbar"
+        android:layout_weight="0.9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:circleRadius="8dp"
+        app:circleMargin="8dp"
+        app:animDistance="10dp"
+        app:animDuration="500"
+        app:animDelay="150"
+        app:animInterpolator="accelerateDecelerate"/>
+
+    <LinearLayout
+        android:layout_weight="0.1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <life.sabujak.roundedbutton.RoundedButton
+            android:id="@+id/blood_fragment_blood_request"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:text="Blood Request"
+            app:buttonGradientStartColor="@color/blood_request_start_color"
+            app:buttonGradientEndColor="@color/blood_request_end_color"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:buttonCornerRadius="10dp"/>
+
+        <life.sabujak.roundedbutton.RoundedButton
+            android:id="@+id/blood_fragment_blood_report"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:text="Blood Report"
+            app:buttonGradientStartColor="@color/blood_report_start_color"
+            app:buttonGradientEndColor="@color/blood_report_end_color"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:buttonCornerRadius="10dp"/>
+
+    </LinearLayout>
 
 </LinearLayout>

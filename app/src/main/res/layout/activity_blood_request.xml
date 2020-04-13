@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="#FFF"
+    tools:context=".OtherActivities.BloodRequestActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar_blood_request"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"/>
+
+    <TextView
+        android:text="Blood Request"
+        android:textColor="@color/blood_active"
+        android:textSize="50sp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"/>
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="fill_parent"
+       android:orientation="vertical"
+       android:gravity="center">
+
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="Mobile Number"
+           android:layout_marginStart="25dp"
+           android:layout_marginEnd="20dp"/>
+
+       <TextView
+           android:id="@+id/blood_request_user_name"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="01911911088"
+           android:textStyle="bold"
+           android:textSize="24sp"
+           android:textColor="@color/blood_active"
+           android:layout_marginStart="25dp"
+           android:layout_marginEnd="20dp"
+           android:layout_marginBottom="20dp"/>
+
+       <TextView
+           android:text="Select your Blood Type"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginStart="25dp"
+           android:layout_marginEnd="20dp"/>
+       <Spinner
+           android:id="@+id/blood_request_blood_list_spinner"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginStart="25dp"
+           android:layout_marginEnd="20dp"
+           android:layout_marginBottom="20dp"/>
+
+       <life.sabujak.roundedbutton.RoundedButton
+           android:id="@+id/blood_request_submit"
+           android:layout_width="match_parent"
+           android:layout_height="50dp"
+           app:buttonColor="@color/blood_active"
+           android:text="Submit"
+           android:textStyle="bold"
+           android:textSize="25sp"
+           android:gravity="center"
+           android:textColor="@color/white"
+           android:layout_marginTop="30dp"
+           android:layout_marginStart="20dp"
+           android:layout_marginEnd="20dp"
+           android:layout_marginBottom="20dp"
+           app:buttonCornerRadius="20dp"/>
+
+       <me.ibrahimsn.lib.CirclesLoadingView
+           android:id="@+id/blood_request_circle_loading_view"
+           android:layout_width="match_parent"
+           android:layout_height="100dp"
+           app:circleRadius="8dp"
+           app:circleMargin="8dp"
+           app:animDistance="10dp"
+           app:animDuration="500"
+           app:animDelay="150"
+           app:animInterpolator="accelerateDecelerate"
+           android:visibility="invisible"/>
+   </LinearLayout>
+
+</LinearLayout>

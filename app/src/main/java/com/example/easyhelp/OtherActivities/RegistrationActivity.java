@@ -57,6 +57,7 @@ public class RegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
         findViewByAll();
         registrationCall();
+        forSharedPreference();
 
     }
 
@@ -127,16 +128,24 @@ public class RegistrationActivity extends AppCompatActivity {
                     RegistrationItems registrationItems = response.body();
 
                     int errorCode = registrationItems.getError();
+                    String errorReport = registrationItems.getError_report();
 
-                    if (errorCode == 1)
+                    if (errorCode == 1 && errorReport.equals("This Mobile number is already exist. Try another."))
                     {
                         customDialog.hideDialog();
                         Toasty.error(RegistrationActivity.this, "Password or UserName not matched",Toasty.LENGTH_SHORT,true).show();
                     }
 
+                    else if (errorCode == 1)
+                    {
+                        customDialog.hideDialog();
+                        Toasty.error(RegistrationActivity.this, errorReport,Toasty.LENGTH_SHORT,true).show();
+                    }
+
                     else if (errorCode == 0)
                     {
 
+                        Toasty.success(RegistrationActivity.this, "Registration successful. Please login to continue",Toasty.LENGTH_LONG,true).show();
                         Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
                         intent.putExtra("login","LOGIN\nto continue");
                         startActivity(intent);
@@ -221,6 +230,27 @@ public class RegistrationActivity extends AppCompatActivity {
             default:
                 return "0";
         }
+    }
+
+    private void forSharedPreference()
+    {
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        editor = preferences.edit();
+
+        editor.putString("user_name", null);
+        editor.putString("password", null);
+        editor.putString("category", null);
+        editor.putString("id", null);
+        editor.putString("name", null);
+        editor.putString("user_catagory", null);
+        editor.putString("catagory_type", null);
+        editor.putString("mobile", null);
+        editor.putString("address", null);
+        editor.putString("image_url", null);
+        editor.putString("institute_name", null);
+        editor.putString("facebook_url", null);
+        editor.putBoolean("facebook_done", false);
+        editor.commit();
     }
 
 }

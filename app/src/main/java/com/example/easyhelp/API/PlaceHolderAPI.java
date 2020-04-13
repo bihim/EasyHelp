@@ -1,5 +1,7 @@
 package com.example.easyhelp.API;
 
+import com.example.easyhelp.BloodThings.BloodReportListAPI;
+import com.example.easyhelp.BloodThings.BloodRequestAPI;
 import com.example.easyhelp.ChangePasswordThings.ChangePasswordItems;
 import com.example.easyhelp.ConstructionThings.ConstructionItems;
 import com.example.easyhelp.LoginThings.LoginAPIElements;
@@ -72,5 +74,20 @@ public interface PlaceHolderAPI
             @Field("address") String address
     );
 
+
+    /*Blood Report List*/
+    @FormUrlEncoded
+    @POST("bloods.php")
+    Call<BloodReportListAPI> getBloodList(
+            @Field("user_id") int user_id
+    );
+
+    /*Blood Request API*/
+    @FormUrlEncoded
+    @POST("blood.php")
+    Call<BloodRequestAPI> getRequestBlood(
+            @Field("user_name") String user_name,
+            @Field("blood") String blood
+    );
 
 }

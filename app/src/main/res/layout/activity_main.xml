@@ -95,7 +95,8 @@
             app:bt_colorInactive="@color/blood_inactive"
             app:bt_icon="@drawable/ic_blood"
             app:bt_shape="@drawable/transition_blood"
-            app:bt_title="Blood" />
+            app:bt_title="Blood"
+            app:bt_badgeTextSize="10sp"/>
 
 
 

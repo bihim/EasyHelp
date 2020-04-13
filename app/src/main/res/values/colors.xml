@@ -34,4 +34,12 @@
     <color name="recyclerViewBackground">#B7B7B7</color>
 
     <color name="change_password_color">#d35400</color>
+
+    <color name="blood_request_start_color">#571845</color>
+    <color name="blood_request_end_color">#900C3E</color>
+
+    <color name="blood_report_start_color">#FF5733</color>
+    <color name="blood_report_end_color">#FFC300</color>
+
+
 </resources>

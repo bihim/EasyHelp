@@ -40,7 +40,6 @@ public class GoToLoginRegisterActivity extends AppCompatActivity
             public void onClick(View v)
             {
                 startActivity(new Intent(GoToLoginRegisterActivity.this, BeforeRegistrationActivity.class));
-                finish();
             }
         });
 
@@ -49,7 +48,6 @@ public class GoToLoginRegisterActivity extends AppCompatActivity
             public void onClick(View v)
             {
                 startActivity(new Intent(GoToLoginRegisterActivity.this, LoginActivity.class));
-                finish();
             }
         });
 

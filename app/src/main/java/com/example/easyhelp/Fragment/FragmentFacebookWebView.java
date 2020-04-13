@@ -53,7 +53,7 @@ public class FragmentFacebookWebView extends Fragment
                         preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
                         editor = preferences.edit();
                         editor.putString("facebook_url", webView.getUrl());
-                        editor.putString("facebook_done","yes");
+                        editor.putBoolean("facebook_done",true);
                         editor.apply();
                         startActivity(new Intent(getActivity(), MainActivity.class));
                         getActivity().finish();

@@ -19,6 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import com.example.easyhelp.OtherActivities.ChangePasswordActivity;
 import com.example.easyhelp.OtherActivities.DonationActivity;
 import com.example.easyhelp.OtherActivities.HelpActivity;
 import com.example.easyhelp.OtherActivities.ProfileActivity;
@@ -31,7 +32,7 @@ import life.sabujak.roundedbutton.RoundedButton;
 
 public class HomeFragment extends Fragment {
 
-    RoundedButton roundedButton;
+    RoundedButton roundedButton, roundedButtonChangePassword;
 
     CardView profileCardView, balanceCardView, helpCardView, donationCardView, welcomeSpeech;
 
@@ -70,6 +71,14 @@ public class HomeFragment extends Fragment {
                 {
                     Toast.makeText(getActivity(), helpButtonEdittext.getText().toString()+" is sending", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        roundedButtonChangePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(getActivity(), ChangePasswordActivity.class));
             }
         });
 
@@ -141,5 +150,6 @@ public class HomeFragment extends Fragment {
         textViewProfileCardName = view.findViewById(R.id.profile_card_name);
         textViewProfileCardCategory = view.findViewById(R.id.profile_card_category);
         textViewProfileCardNumber = view.findViewById(R.id.profile_card_number);
+        roundedButtonChangePassword = view.findViewById(R.id.change_password_button);
     }
 }

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OtherActivities.RegistrationActivity">
+    tools:context=".OtherActivities.RegistrationActivity"
+    android:background="#FFF">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -89,7 +90,8 @@
                 android:id="@+id/registration_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter Name"/>
+                android:hint="Enter Name"
+                android:inputType="textPersonName"/>
         </ss.anoop.awesometextinputlayout.AwesomeTextInputLayout>
 
         <ss.anoop.awesometextinputlayout.AwesomeTextInputLayout
@@ -141,7 +143,8 @@
                 android:id="@+id/registration_country"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter Country Name"/>
+                android:hint="Enter Country Name"
+                android:inputType="text"/>
         </ss.anoop.awesometextinputlayout.AwesomeTextInputLayout>
 
         <ss.anoop.awesometextinputlayout.AwesomeTextInputLayout
@@ -158,7 +161,8 @@
                 android:id="@+id/registration_division"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter Division"/>
+                android:hint="Enter Division"
+                android:inputType="text"/>
         </ss.anoop.awesometextinputlayout.AwesomeTextInputLayout>
 
         <ss.anoop.awesometextinputlayout.AwesomeTextInputLayout
@@ -175,7 +179,8 @@
                 android:id="@+id/registration_district"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter District"/>
+                android:hint="Enter District"
+                android:inputType="text"/>
         </ss.anoop.awesometextinputlayout.AwesomeTextInputLayout>
 
         <ss.anoop.awesometextinputlayout.AwesomeTextInputLayout
@@ -192,7 +197,8 @@
                 android:id="@+id/registration_ps"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter Post Station"/>
+                android:hint="Enter Post Station"
+                android:inputType="text"/>
         </ss.anoop.awesometextinputlayout.AwesomeTextInputLayout>
 
         <ss.anoop.awesometextinputlayout.AwesomeTextInputLayout

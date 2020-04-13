@@ -68,11 +68,8 @@ public class LoginActivity extends AppCompatActivity
         Intent intent = getIntent();
         registrationText = intent.getStringExtra("login");
 
-        if (registrationText.isEmpty())
-        {
-            loginText.setText("LOGIN");
-        }
-        else
+
+        if(registrationText!=null)
         {
             loginText.setText(registrationText);
         }
@@ -110,7 +107,7 @@ public class LoginActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                startActivity(new Intent(LoginActivity.this, GoToLoginRegisterActivity.class));
+                startActivity(new Intent(LoginActivity.this, BeforeRegistrationActivity.class));
             }
         });
 
@@ -159,6 +156,8 @@ public class LoginActivity extends AppCompatActivity
                     editor.putString("address", loginAPIElements.getAddress());
                     editor.putString("image_url", loginAPIElements.getImage_url());
                     editor.putString("institute_name", loginAPIElements.getInstitute_name());
+                    editor.putString("facebook_url", null);
+                    editor.putBoolean("facebook_done", false);
                     editor.commit();
                     customDialog.hideDialog();
                     startActivity(new Intent(LoginActivity.this, OneTimeOnlyActivity.class));
