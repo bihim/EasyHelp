@@ -1,4 +1,4 @@
-package com.example.easyhelp.OtherActivities;
+package com.example.easyhelp.RegistrationLoginActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,7 +16,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.easyhelp.API.BaseUrl;
 import com.example.easyhelp.API.PlaceHolderAPI;
@@ -24,6 +23,8 @@ import com.example.easyhelp.CustomDialog.CustomDialog;
 import com.example.easyhelp.CustomSpinner.CustomSpinnerAdapter;
 import com.example.easyhelp.LoginThings.LoginAPIElements;
 import com.example.easyhelp.MainActivity;
+import com.example.easyhelp.OtherActivities.ForgetPasswordActivity;
+import com.example.easyhelp.OtherActivities.OneTimeOnlyActivity;
 import com.example.easyhelp.R;
 import com.google.android.material.appbar.MaterialToolbar;
 
@@ -33,7 +34,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.Retrofit.Builder;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginActivity extends AppCompatActivity
@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity
     PlaceHolderAPI placeHolderAPI;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
-    Button gotoRegisterLoginButton;
+    Button forget_password;
     String[] professionName = {"Helper/General People", "Lawyer", "Journalist", "Police"};
     int[] icons = {R.drawable.ic_general, R.drawable.ic_lawyer, R.drawable.ic_journalist, R.drawable.ic_policeman};
     String selectedItem;
@@ -103,11 +103,12 @@ public class LoginActivity extends AppCompatActivity
             }
         });
 
-        gotoRegisterLoginButton.setOnClickListener(new View.OnClickListener() {
+        forget_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
-                startActivity(new Intent(LoginActivity.this, BeforeRegistrationActivity.class));
+                startActivity(new Intent(LoginActivity.this, ForgetPasswordActivity.class));
+                finish();
             }
         });
 
@@ -118,7 +119,7 @@ public class LoginActivity extends AppCompatActivity
 
         customDialog.showDialog();
         Log.d("CUSTOMSPINNER", "onItemSelected: "+selectedItem);
-        Call<LoginAPIElements> call = placeHolderAPI.getLoginInfo(userName.getText().toString(), password.getText().toString(),selectedItem);
+        Call<LoginAPIElements> call = placeHolderAPI.getLoginInfo(userName.getText().toString(), password.getText().toString(),"");
         call.enqueue(new Callback<LoginAPIElements>() {
             @Override
             public void onResponse(Call<LoginAPIElements> call, Response<LoginAPIElements> response)
@@ -157,10 +158,14 @@ public class LoginActivity extends AppCompatActivity
                     editor.putString("image_url", loginAPIElements.getImage_url());
                     editor.putString("institute_name", loginAPIElements.getInstitute_name());
                     editor.putString("facebook_url", null);
-                    editor.putBoolean("facebook_done", false);
-                    editor.commit();
+                    boolean facebookExists = preferences.getBoolean("facebook_done", false);
+                    if (!facebookExists)
+                    {
+                        editor.putBoolean("facebook_done", false);
+                    }
+                    editor.apply();
                     customDialog.hideDialog();
-                    startActivity(new Intent(LoginActivity.this, OneTimeOnlyActivity.class));
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     finish();
                 }
             }
@@ -180,7 +185,7 @@ public class LoginActivity extends AppCompatActivity
         spinner = findViewById(R.id.login_spinner);
         userName = findViewById(R.id.login_user_name);
         password = findViewById(R.id.login_password);
-        gotoRegisterLoginButton = findViewById(R.id.go_to_login_register_activity);
+        forget_password = findViewById(R.id.forget_password_login);
         customDialog = new CustomDialog(this);
         loginText = findViewById(R.id.login_text);
     }

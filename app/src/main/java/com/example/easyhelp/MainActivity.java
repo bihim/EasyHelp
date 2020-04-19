@@ -2,7 +2,6 @@ package com.example.easyhelp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.content.Context;
@@ -18,7 +17,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 
 import com.example.easyhelp.API.BaseUrl;
 import com.example.easyhelp.API.PlaceHolderAPI;
@@ -32,9 +30,7 @@ import com.example.easyhelp.Fragment.MessageFragment;
 import com.example.easyhelp.Fragment.NewsFragment;
 import com.example.easyhelp.OtherActivities.ChangePasswordActivity;
 import com.example.easyhelp.OtherActivities.ConstructionActivity;
-import com.example.easyhelp.OtherActivities.GoToLoginRegisterActivity;
-import com.example.easyhelp.OtherActivities.LoginActivity;
-import com.example.easyhelp.OtherActivities.SplashScreenActivity;
+import com.example.easyhelp.RegistrationLoginActivities.GoToLoginRegisterActivity;
 import com.gauravk.bubblenavigation.BubbleNavigationLinearView;
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -194,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    @Override
+   /* @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
         MenuInflater inflater = getMenuInflater();
@@ -220,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
 
-    }
+    }*/
 
     private boolean isNetWorkConnectedd()
     {

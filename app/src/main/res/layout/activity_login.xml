@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="#FFF"
-    tools:context=".OtherActivities.LoginActivity">
+    tools:context=".RegistrationLoginActivities.LoginActivity">
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar_login"
         android:layout_width="match_parent"
@@ -65,14 +65,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginEnd="20dp"/>
+        android:layout_marginEnd="20dp"
+        android:visibility="gone"/>
     <Spinner
         android:id="@+id/login_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="20dp"
+        android:visibility="gone"/>
 
     <life.sabujak.roundedbutton.RoundedButton
         android:id="@+id/login_button"
@@ -91,7 +93,7 @@
         app:buttonCornerRadius="20dp"/>
 
     <Button
-        android:id="@+id/go_to_login_register_activity"
+        android:id="@+id/forget_password_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"

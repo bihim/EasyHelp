@@ -1,33 +1,79 @@
 package com.example.easyhelp.WelcomeSpeechThing;
 
-public class WelcomeSpeechAPIElements
-{
-    private int user_id;
+import com.google.gson.annotations.SerializedName;
+
+public class WelcomeSpeechAPIElements {
+
+    @SerializedName("error_report")
+    private String errorReport;
+    @SerializedName("error")
     private int error;
-    private String error_report;
-    private String my_speech;
+    @SerializedName("established")
+    private int established;
+    @SerializedName("about_us")
+    private String aboutUs;
+    @SerializedName("head_image")
+    private String headImage;
+    @SerializedName("head_of_institute")
+    private String headOfInstitute;
+    @SerializedName("institute_website")
+    private String instituteWebsite;
+    @SerializedName("institute_email")
+    private String instituteEmail;
+    @SerializedName("institute_phone")
+    private String institutePhone;
+    @SerializedName("institute_address")
+    private String instituteAddress;
+    @SerializedName("institute_logo")
+    private String instituteLogo;
+    @SerializedName("institute_name")
+    private String instituteName;
 
-    public WelcomeSpeechAPIElements(int user_id) {
-        this.user_id = user_id;
-    }
-
-    public int getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public String getErrorReport() {
+        return errorReport;
     }
 
     public int getError() {
         return error;
     }
 
-    public String getError_report() {
-        return error_report;
+    public int getEstablished() {
+        return established;
     }
 
-    public String getMy_speech() {
-        return my_speech;
+    public String getAboutUs() {
+        return aboutUs;
+    }
+
+    public String getHeadImage() {
+        return headImage;
+    }
+
+    public String getHeadOfInstitute() {
+        return headOfInstitute;
+    }
+
+    public String getInstituteWebsite() {
+        return instituteWebsite;
+    }
+
+    public String getInstituteEmail() {
+        return instituteEmail;
+    }
+
+    public String getInstitutePhone() {
+        return institutePhone;
+    }
+
+    public String getInstituteAddress() {
+        return instituteAddress;
+    }
+
+    public String getInstituteLogo() {
+        return instituteLogo;
+    }
+
+    public String getInstituteName() {
+        return instituteName;
     }
 }

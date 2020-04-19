@@ -8,14 +8,21 @@
     android:background="?android:attr/selectableItemBackground">
 
     <com.airbnb.lottie.LottieAnimationView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
         android:scaleType="centerCrop"
         android:layout_marginTop="10dp"
-        android:background="?android:attr/selectableItemBackground"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/wave_loading"
         app:lottie_speed="1"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar_cyclic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="200dp"
+        android:minWidth="200dp"
+        android:visibility="gone"/>
 
 </LinearLayout>

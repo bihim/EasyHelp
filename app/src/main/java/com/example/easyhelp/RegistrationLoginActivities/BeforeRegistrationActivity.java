@@ -1,17 +1,14 @@
-package com.example.easyhelp.OtherActivities;
+package com.example.easyhelp.RegistrationLoginActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import com.example.easyhelp.BeforeRegistrationThings.BeforeRegistrationAdapter;
 import com.example.easyhelp.BeforeRegistrationThings.BeforeRegistrationItems;
-import com.example.easyhelp.MainActivity;
 import com.example.easyhelp.R;
 import androidx.appcompat.widget.Toolbar;
 
@@ -55,10 +52,10 @@ public class BeforeRegistrationActivity extends AppCompatActivity
         beforeRegistrationRecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
 
         beforeRegistrationItems = new ArrayList<>();
-        beforeRegistrationItems.add(new BeforeRegistrationItems(R.drawable.ic_general, "Helper/General People"));
-        beforeRegistrationItems.add(new BeforeRegistrationItems(R.drawable.ic_lawyer, "Lawyer"));
-        beforeRegistrationItems.add(new BeforeRegistrationItems(R.drawable.ic_journalist, "Journalist"));
-        beforeRegistrationItems.add(new BeforeRegistrationItems(R.drawable.ic_policeman, "Police"));
+        beforeRegistrationItems.add(new BeforeRegistrationItems(R.drawable.ic_general, "Helper/General People","0"));
+        beforeRegistrationItems.add(new BeforeRegistrationItems(R.drawable.ic_lawyer, "Lawyer","1"));
+        beforeRegistrationItems.add(new BeforeRegistrationItems(R.drawable.ic_journalist, "Journalist","2"));
+        beforeRegistrationItems.add(new BeforeRegistrationItems(R.drawable.ic_policeman, "Police","3"));
 
         beforeRegistrationAdapter = new BeforeRegistrationAdapter(beforeRegistrationItems, context);
         beforeRegistrationRecyclerView.setAdapter(beforeRegistrationAdapter);

@@ -1,18 +1,21 @@
 package com.example.easyhelp.BeforeRegistrationThings;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.easyhelp.OtherActivities.RegistrationActivity;
+import com.example.easyhelp.RegistrationLoginActivities.CountryDivisionDistrictThana.Activity.CountryActivity;
+import com.example.easyhelp.RegistrationLoginActivities.RegistrationActivity;
 import com.example.easyhelp.R;
 
 import java.util.ArrayList;
@@ -58,11 +61,16 @@ public class BeforeRegistrationAdapter extends RecyclerView.Adapter<BeforeRegist
             @Override
             public void onClick(View v)
             {
-                Intent intent = new Intent(context, RegistrationActivity.class);
+                Intent intent = new Intent(context, CountryActivity.class);
 
                 intent.putExtra(PROFESSION_NAME, selectedItems.getProfessionName());
                 intent.putExtra(PROFESSION_ICON, selectedItems.getIconId());
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("category", selectedItems.getProfessionId());
+                editor.apply();
                 context.startActivity(intent);
+                ((Activity)context).finish();
             }
         });
     }

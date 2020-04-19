@@ -3,6 +3,7 @@ package com.example.easyhelp.OtherActivities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.Html;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,7 +54,7 @@ public class WelcomeSpeech extends AppCompatActivity {
         retrofit = new Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(GsonConverterFactory.create()).build();
         placeHolderAPI = retrofit.create(PlaceHolderAPI.class);
 
-        Call<WelcomeSpeechAPIElements> call = placeHolderAPI.getWelcomeSpeech(1);
+        Call<WelcomeSpeechAPIElements> call = placeHolderAPI.getWelcomeSpeech();
 
         call.enqueue(new Callback<WelcomeSpeechAPIElements>() {
             @Override
@@ -68,8 +69,7 @@ public class WelcomeSpeech extends AppCompatActivity {
 
                 customDialog.hideDialog();
                 WelcomeSpeechAPIElements welcomeSpeechAPIElements = response.body();
-
-                welcomeSpeechTextView.setText(welcomeSpeechAPIElements.getMy_speech());
+                welcomeSpeechTextView.setText(Html.fromHtml(welcomeSpeechAPIElements.getAboutUs()));
 
             }
 

@@ -41,5 +41,10 @@
     <color name="blood_report_start_color">#FF5733</color>
     <color name="blood_report_end_color">#FFC300</color>
 
+    <color name="logo_color_1">#173F5F</color>
+    <color name="logo_color_2">#20639B</color>
+    <color name="logo_color_3">#3CAEA3</color>
+    <color name="logo_color_4">#F6D55C</color>
+    <color name="logo_color_5">#ED553B</color>
 
 </resources>

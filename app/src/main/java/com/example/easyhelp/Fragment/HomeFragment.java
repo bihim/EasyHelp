@@ -32,7 +32,7 @@ import life.sabujak.roundedbutton.RoundedButton;
 
 public class HomeFragment extends Fragment {
 
-    RoundedButton roundedButton, roundedButtonChangePassword;
+    RoundedButton roundedButton;
 
     CardView profileCardView, balanceCardView, helpCardView, donationCardView, welcomeSpeech;
 
@@ -74,13 +74,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        roundedButtonChangePassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                startActivity(new Intent(getActivity(), ChangePasswordActivity.class));
-            }
-        });
 
 
         return view;
@@ -90,7 +83,26 @@ public class HomeFragment extends Fragment {
     {
         preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         textViewProfileCardName.setText(preferences.getString("name",null));
-        textViewProfileCardCategory.setText(preferences.getString("user_catagory",null));
+        String category_type = preferences.getString("catagory_type", null);
+        switch (category_type)
+        {
+            case "0":
+                textViewProfileCardCategory.setText("Helper/General People");
+                break;
+            case "1":
+                textViewProfileCardCategory.setText("Lawyer");
+                break;
+            case "2":
+                textViewProfileCardCategory.setText("Journalist");
+                break;
+            case "3":
+                textViewProfileCardCategory.setText("Police");
+                break;
+            default:
+                textViewProfileCardCategory.setText("______");
+                break;
+        }
+
         textViewProfileCardNumber.setText(preferences.getString("mobile",null));
     }
 
@@ -150,6 +162,5 @@ public class HomeFragment extends Fragment {
         textViewProfileCardName = view.findViewById(R.id.profile_card_name);
         textViewProfileCardCategory = view.findViewById(R.id.profile_card_category);
         textViewProfileCardNumber = view.findViewById(R.id.profile_card_number);
-        roundedButtonChangePassword = view.findViewById(R.id.change_password_button);
     }
 }

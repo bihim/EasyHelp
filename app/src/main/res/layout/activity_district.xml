@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFF"
+    tools:context=".RegistrationLoginActivities.CountryDivisionDistrictThana.Activity.DistrictActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="Choose your district"
+        android:gravity="center"
+        android:layout_marginBottom="15dp"
+        android:background="#FFF"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/country_division_district_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/default_shape_inactive_color"/>
+
+</LinearLayout>

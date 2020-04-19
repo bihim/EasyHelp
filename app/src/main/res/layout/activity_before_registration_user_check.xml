@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:weightSum="1"
+    android:background="#FFF"
+    tools:context=".RegistrationLoginActivities.BeforeRegistrationUserCheck">
+
+    <ImageView
+        android:layout_weight="0.3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:src="@drawable/ic_logo_with_text"
+        android:gravity="center"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="40dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter your mobile number to continue"
+        android:textColor="@color/logo_color_1"
+        android:textStyle="bold"
+        android:textSize="23sp"
+        android:gravity="center"
+        android:layout_margin="20dp"/>
+
+    <LinearLayout
+        android:layout_weight="0.55"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+        <ss.anoop.awesometextinputlayout.AwesomeTextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:borderColor="@color/logo_color_2"
+            app:borderWidth="2dp"
+            app:cornerRadius="8dp"
+            android:padding="16dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp">
+            <EditText
+                android:id="@+id/before_registration_user_check_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Mobile"
+                android:inputType="phone"/>
+        </ss.anoop.awesometextinputlayout.AwesomeTextInputLayout>
+
+        <life.sabujak.roundedbutton.RoundedButton
+            android:id="@+id/before_registration_user_check_button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:buttonColor="@color/logo_color_2"
+            android:text="Next"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            app:buttonCornerRadius="20dp"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

@@ -9,17 +9,16 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 
 import com.example.easyhelp.API.BaseUrl;
 import com.example.easyhelp.API.PlaceHolderAPI;
+import com.example.easyhelp.RegistrationLoginActivities.GoToLoginRegisterActivity;
 import com.example.easyhelp.ConstructionThings.ConstructionItems;
 import com.example.easyhelp.LoginThings.LoginAPIElements;
 import com.example.easyhelp.MainActivity;
 import com.example.easyhelp.R;
 
 import java.util.Timer;
-import java.util.TimerTask;
 
 import es.dmoral.toasty.Toasty;
 import retrofit2.Call;
@@ -45,26 +44,26 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        timer = new Timer();
+        if (!isNetWorkConnectedd())
+        {
+            startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
+            finish();
+        }
+        else
+        {
+            login();
+        }
+        finish();
+
+        /*timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run()
             {
-                if (!isNetWorkConnectedd())
-                {
-                    startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
-                    finish();
-                }
-                else
-                {
-                    login();
-                }
-                finish();
+
 
             }
-        }, 5000);
-
-
+        }, 5000);*/
     }
 
 
@@ -86,7 +85,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             retrofit = new Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(GsonConverterFactory.create()).build();
             placeHolderAPI = retrofit.create(PlaceHolderAPI.class);
 
-            Call<LoginAPIElements> call = placeHolderAPI.getLoginInfo(userName, password, category);
+            Call<LoginAPIElements> call = placeHolderAPI.getLoginInfo(userName, password, "");
             call.enqueue(new Callback<LoginAPIElements>() {
                 @Override
                 public void onResponse(Call<LoginAPIElements> call, Response<LoginAPIElements> response)

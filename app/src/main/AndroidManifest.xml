@@ -13,8 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".OtherActivities.BloodReportOwnActivity"></activity>
-        <activity android:name=".OtherActivities.BloodRequestActivity"/>
+        <activity android:name=".RegistrationLoginActivities.LoadingActivity"></activity>
+        <activity android:name=".RegistrationLoginActivities.CountryDivisionDistrictThana.Activity.ThanaActivity" />
+        <activity android:name=".RegistrationLoginActivities.CountryDivisionDistrictThana.Activity.DistrictActivity" />
+        <activity android:name=".RegistrationLoginActivities.CountryDivisionDistrictThana.Activity.DivisionActivity" />
+        <activity android:name=".RegistrationLoginActivities.CountryDivisionDistrictThana.Activity.CountryActivity" />
+        <activity android:name=".RegistrationLoginActivities.BeforeRegistrationUserCheck" />
+        <activity android:name=".OtherActivities.BloodReportOwnActivity" />
+        <activity android:name=".OtherActivities.BloodRequestActivity" />
         <activity android:name=".OtherActivities.ForgetPasswordActivity" />
         <activity android:name=".OtherActivities.OneTimeOnlyActivity" />
         <activity android:name=".OtherActivities.FacebookCopyLinkUrlActivity" />
@@ -25,12 +31,12 @@
         <activity
             android:name=".OtherActivities.WelcomeSpeech"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".OtherActivities.LoginActivity" />
+        <activity android:name=".RegistrationLoginActivities.LoginActivity" />
         <activity
-            android:name=".OtherActivities.BeforeRegistrationActivity"
-            android:parentActivityName=".OtherActivities.GoToLoginRegisterActivity" />
-        <activity android:name=".OtherActivities.RegistrationActivity" />
-        <activity android:name=".OtherActivities.GoToLoginRegisterActivity" />
+            android:name=".RegistrationLoginActivities.BeforeRegistrationActivity"
+            android:parentActivityName=".RegistrationLoginActivities.GoToLoginRegisterActivity" />
+        <activity android:name=".RegistrationLoginActivities.RegistrationActivity" />
+        <activity android:name=".RegistrationLoginActivities.GoToLoginRegisterActivity" />
         <activity android:name=".OtherActivities.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

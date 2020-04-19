@@ -24,6 +24,7 @@ public class CustomDialog
         dialog.setCancelable(false);
         //...that's the layout i told you will inflate later
         dialog.setContentView(R.layout.dialog_loading);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
         //...initialize the imageView form infalted layout
 

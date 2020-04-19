@@ -4,11 +4,13 @@ public class BeforeRegistrationItems
 {
     private int iconId;
     private String professionName;
+    private String professionId;
 
-    public BeforeRegistrationItems(int iconId, String professionName)
+    public BeforeRegistrationItems(int iconId, String professionName, String professionId)
     {
         this.iconId = iconId;
         this.professionName = professionName;
+        this.professionId = professionId;
     }
 
     public int getIconId() {
@@ -27,6 +29,13 @@ public class BeforeRegistrationItems
         this.professionName = professionName;
     }
 
+    public String getProfessionId() {
+        return professionId;
+    }
+
+    public void setProfessionId(String professionId) {
+        this.professionId = professionId;
+    }
 
     /*
     * This is for registration professions with icons*/

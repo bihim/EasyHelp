@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.easyhelp.API.BaseUrl;
 import com.example.easyhelp.API.PlaceHolderAPI;
+import com.example.easyhelp.RegistrationLoginActivities.GoToLoginRegisterActivity;
 import com.example.easyhelp.CustomDialog.CustomDialog;
 import com.example.easyhelp.Profilethings.ProfileAdapter;
 import com.example.easyhelp.Profilethings.ProfileItem;
@@ -31,6 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import es.dmoral.toasty.Toasty;
+import life.sabujak.roundedbutton.RoundedButton;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -51,6 +53,7 @@ public class ProfileActivity extends AppCompatActivity {
     Button logoutButton;
     TextView toolbarText;
     SharedPreferences.Editor editor;
+    RoundedButton changePassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,29 +65,49 @@ public class ProfileActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         logoutButton = findViewById(R.id.profile_toolbar_logout_button);
         toolbarText = findViewById(R.id.profile_toolbar_text);
+        changePassword = findViewById(R.id.change_password_button_profile);
         toolbarText.setText("Profile");
         threadToast(this);
-        if (!isNetWorkConnectedd())
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean isfacebookUrlExists = preferences.getBoolean("facebook_done", false);
+
+        if (!isfacebookUrlExists)
         {
-            Toasty.error(this,"No internet connection is available", Toasty.LENGTH_SHORT, true).show();
+            startActivity(new Intent(this, OneTimeOnlyActivity.class));
+            finish();
         }
+
         else
         {
-            profileJson();
+            if (!isNetWorkConnectedd())
+            {
+                Toasty.error(this,"No internet connection is available", Toasty.LENGTH_SHORT, true).show();
+            }
+            else
+            {
+                profileJson();
+            }
         }
+        changePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(ProfileActivity.this, ChangePasswordActivity.class));
+            }
+        });
     }
 
 
     private void profileJson()
     {
         customDialog = new CustomDialog(this);
-        retrofit = new Retrofit.Builder().baseUrl(baseurl).addConverterFactory(GsonConverterFactory.create()).build();
-        placeHolderAPI = retrofit.create(PlaceHolderAPI.class);
-
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         int userId = Integer.parseInt(preferences.getString("id",null));
-
         customDialog.showDialog();
+
+        retrofit = new Retrofit.Builder().baseUrl(baseurl).addConverterFactory(GsonConverterFactory.create()).build();
+        placeHolderAPI = retrofit.create(PlaceHolderAPI.class);
         Call<ProfileItemAPI> call = placeHolderAPI.getProfileDetails(userId);
         call.enqueue(new Callback<ProfileItemAPI>() {
             @Override
@@ -300,7 +323,7 @@ public class ProfileActivity extends AppCompatActivity {
         editor.putString("institute_name", null);
         editor.putString("facebook_url", null);
         editor.putBoolean("facebook_done", false);
-        editor.commit();
+        editor.apply();
         startActivity(new Intent(this, GoToLoginRegisterActivity.class));
         finish();
     }

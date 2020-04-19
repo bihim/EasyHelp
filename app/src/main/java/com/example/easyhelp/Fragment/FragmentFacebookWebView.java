@@ -18,6 +18,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.easyhelp.MainActivity;
+import com.example.easyhelp.OtherActivities.ProfileActivity;
 import com.example.easyhelp.R;
 
 public class FragmentFacebookWebView extends Fragment
@@ -55,7 +56,7 @@ public class FragmentFacebookWebView extends Fragment
                         editor.putString("facebook_url", webView.getUrl());
                         editor.putBoolean("facebook_done",true);
                         editor.apply();
-                        startActivity(new Intent(getActivity(), MainActivity.class));
+                        startActivity(new Intent(getActivity(), ProfileActivity.class));
                         getActivity().finish();
                     }
                 });

@@ -5,17 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".OtherActivities.BeforeRegistrationActivity">
+    tools:context=".RegistrationLoginActivities.BeforeRegistrationActivity">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_before_registration"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:tooltipText="Select Your Profession"/>
+        android:tooltipText="Select Your Profession"
+        android:visibility="gone"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Choose your profession"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="@color/logo_color_2"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/before_registration_recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="fill_parent"
         android:layout_gravity="center"
         android:background="@color/recyclerViewBackground"/>
 
