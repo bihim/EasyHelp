@@ -8,7 +8,7 @@
     android:gravity="center"
     android:weightSum="1"
     android:background="#FFF"
-    tools:context=".RegistrationLoginActivities.BeforeRegistrationUserCheck">
+    tools:context=".RegistrationAndLogin.Registration.Activity.BeforeRegistrationUserCheckActivity">
 
     <ImageView
         android:layout_weight="0.3"

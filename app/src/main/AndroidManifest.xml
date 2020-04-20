@@ -13,30 +13,30 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".RegistrationLoginActivities.LoadingActivity"></activity>
-        <activity android:name=".RegistrationLoginActivities.CountryDivisionDistrictThana.Activity.ThanaActivity" />
-        <activity android:name=".RegistrationLoginActivities.CountryDivisionDistrictThana.Activity.DistrictActivity" />
-        <activity android:name=".RegistrationLoginActivities.CountryDivisionDistrictThana.Activity.DivisionActivity" />
-        <activity android:name=".RegistrationLoginActivities.CountryDivisionDistrictThana.Activity.CountryActivity" />
-        <activity android:name=".RegistrationLoginActivities.BeforeRegistrationUserCheck" />
-        <activity android:name=".OtherActivities.BloodReportOwnActivity" />
-        <activity android:name=".OtherActivities.BloodRequestActivity" />
+        <activity android:name=".RegistrationAndLogin.Login.Activity.LoadingActivity"></activity>
+        <activity android:name=".RegistrationAndLogin.Registration.Activity.ThanaActivity" />
+        <activity android:name=".RegistrationAndLogin.Registration.Activity.DistrictActivity" />
+        <activity android:name=".RegistrationAndLogin.Registration.Activity.DivisionActivity" />
+        <activity android:name=".RegistrationAndLogin.Registration.Activity.CountryActivity" />
+        <activity android:name=".RegistrationAndLogin.Registration.Activity.BeforeRegistrationUserCheckActivity" />
+        <activity android:name=".Bloods.Activity.BloodReportOwnActivity" />
+        <activity android:name=".Bloods.Activity.BloodRequestActivity" />
         <activity android:name=".OtherActivities.ForgetPasswordActivity" />
         <activity android:name=".OtherActivities.OneTimeOnlyActivity" />
-        <activity android:name=".OtherActivities.FacebookCopyLinkUrlActivity" />
+        <activity android:name=".Facebook.Activity.FacebookCopyLinkUrlActivity" />
         <activity
-            android:name=".OtherActivities.ChangePasswordActivity"
+            android:name=".ChangePassword.Activity.ChangePasswordActivity"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".OtherActivities.ConstructionActivity" />
+        <activity android:name=".Construction.Activity.ConstructionActivity" />
         <activity
-            android:name=".OtherActivities.WelcomeSpeech"
+            android:name=".WelcomeSpeech.WelcomeSpeech"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".RegistrationLoginActivities.LoginActivity" />
+        <activity android:name=".RegistrationAndLogin.Login.Activity.LoginActivity" />
         <activity
-            android:name=".RegistrationLoginActivities.BeforeRegistrationActivity"
-            android:parentActivityName=".RegistrationLoginActivities.GoToLoginRegisterActivity" />
-        <activity android:name=".RegistrationLoginActivities.RegistrationActivity" />
-        <activity android:name=".RegistrationLoginActivities.GoToLoginRegisterActivity" />
+            android:name=".RegistrationAndLogin.Registration.Activity.BeforeRegistrationActivity"
+            android:parentActivityName=".RegistrationAndLogin.Registration.Activity.GoToLoginRegisterActivity" />
+        <activity android:name=".RegistrationAndLogin.Registration.Activity.RegistrationActivity" />
+        <activity android:name=".RegistrationAndLogin.Registration.Activity.GoToLoginRegisterActivity" />
         <activity android:name=".OtherActivities.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -45,7 +45,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".OtherActivities.NewsClickedActivity"
+            android:name=".NewsThings.NewsClickedActivity"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".OtherActivities.DonationActivity"
@@ -57,7 +57,7 @@
             android:name=".OtherActivities.WalletActivity"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".OtherActivities.ProfileActivity"
+            android:name=".Profile.Activity.ProfileActivity"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity" />
     </application>

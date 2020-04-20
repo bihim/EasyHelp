@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    tools:context=".OtherActivities.FacebookCopyLinkUrlActivity">
+    tools:context=".Facebook.Activity.FacebookCopyLinkUrlActivity">
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar_facebook"
         android:layout_width="match_parent"

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#FFF"
-    tools:context=".OtherActivities.WelcomeSpeech">
+    tools:context=".WelcomeSpeech.WelcomeSpeech">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar_welcome_speech"

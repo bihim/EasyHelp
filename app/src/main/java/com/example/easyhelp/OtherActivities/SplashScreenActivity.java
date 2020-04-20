@@ -12,9 +12,9 @@ import android.preference.PreferenceManager;
 
 import com.example.easyhelp.API.BaseUrl;
 import com.example.easyhelp.API.PlaceHolderAPI;
-import com.example.easyhelp.RegistrationLoginActivities.GoToLoginRegisterActivity;
-import com.example.easyhelp.ConstructionThings.ConstructionItems;
-import com.example.easyhelp.LoginThings.LoginAPIElements;
+import com.example.easyhelp.RegistrationAndLogin.Registration.Activity.GoToLoginRegisterActivity;
+import com.example.easyhelp.Construction.Item.ConstructionItems;
+import com.example.easyhelp.RegistrationAndLogin.Login.Item.LoginAPIElements;
 import com.example.easyhelp.MainActivity;
 import com.example.easyhelp.R;
 

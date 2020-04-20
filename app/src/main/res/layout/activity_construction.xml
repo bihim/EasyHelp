@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:layout_weight="1"
     android:background="#FFF"
-    tools:context=".OtherActivities.ConstructionActivity">
+    tools:context=".Construction.Activity.ConstructionActivity">
 
     <com.airbnb.lottie.LottieAnimationView
         android:layout_weight="0.5"

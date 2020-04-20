@@ -1,17 +1,15 @@
 package com.example.easyhelp.API;
 
-import com.example.easyhelp.BeforeRegistrationThings.BeforeRegistrationUserCheckAPI;
-import com.example.easyhelp.BloodThings.BloodReportListAPI;
-import com.example.easyhelp.BloodThings.BloodRequestAPI;
-import com.example.easyhelp.ChangePasswordThings.ChangePasswordItems;
-import com.example.easyhelp.ConstructionThings.ConstructionItems;
-import com.example.easyhelp.LoginThings.LoginAPIElements;
-import com.example.easyhelp.Profilethings.ProfileItemAPI;
-import com.example.easyhelp.RegistrationThings.CountryDivisionDistrictThana;
-import com.example.easyhelp.RegistrationThings.CountryToDivisionSpinnerAPI;
-import com.example.easyhelp.RegistrationThings.RegistrationItems;
-import com.example.easyhelp.RegistrationThings.CountrySpinnerAPI;
-import com.example.easyhelp.WelcomeSpeechThing.WelcomeSpeechAPIElements;
+import com.example.easyhelp.RegistrationAndLogin.Registration.Item.BeforeRegistrationUserCheckAPI;
+import com.example.easyhelp.Bloods.Item.BloodReportListAPI;
+import com.example.easyhelp.Bloods.Item.BloodRequestAPI;
+import com.example.easyhelp.ChangePassword.Items.ChangePasswordItems;
+import com.example.easyhelp.Construction.Item.ConstructionItems;
+import com.example.easyhelp.RegistrationAndLogin.Login.Item.LoginAPIElements;
+import com.example.easyhelp.Profile.Item.ProfileItemAPI;
+import com.example.easyhelp.RegistrationAndLogin.Registration.Item.CountryDivisionDistrictThana;
+import com.example.easyhelp.RegistrationAndLogin.Registration.Item.RegistrationItems;
+import com.example.easyhelp.WelcomeSpeech.WelcomeSpeechAPIElements;
 
 import retrofit2.Call;
 import retrofit2.http.Field;

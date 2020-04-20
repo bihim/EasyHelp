@@ -11,7 +11,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.easyhelp.OtherActivities.NewsClickedActivity;
 import com.example.easyhelp.R;
 
 import java.util.ArrayList;

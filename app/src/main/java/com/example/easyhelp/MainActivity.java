@@ -1,6 +1,5 @@
 package com.example.easyhelp;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -13,24 +12,20 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 
 import com.example.easyhelp.API.BaseUrl;
 import com.example.easyhelp.API.PlaceHolderAPI;
-import com.example.easyhelp.BloodThings.BloodList;
-import com.example.easyhelp.BloodThings.BloodReportListAPI;
-import com.example.easyhelp.ConstructionThings.ConstructionItems;
+import com.example.easyhelp.Bloods.Item.BloodList;
+import com.example.easyhelp.Bloods.Item.BloodReportListAPI;
+import com.example.easyhelp.Construction.Item.ConstructionItems;
 import com.example.easyhelp.Fragment.AdvertisementFragment;
-import com.example.easyhelp.Fragment.BloodFragment;
+import com.example.easyhelp.Bloods.Activity.BloodFragment;
 import com.example.easyhelp.Fragment.HomeFragment;
 import com.example.easyhelp.Fragment.MessageFragment;
-import com.example.easyhelp.Fragment.NewsFragment;
-import com.example.easyhelp.OtherActivities.ChangePasswordActivity;
-import com.example.easyhelp.OtherActivities.ConstructionActivity;
-import com.example.easyhelp.RegistrationLoginActivities.GoToLoginRegisterActivity;
+import com.example.easyhelp.NewsThings.NewsFragment;
+import com.example.easyhelp.Construction.Activity.ConstructionActivity;
+import com.example.easyhelp.RegistrationAndLogin.Registration.Activity.GoToLoginRegisterActivity;
 import com.gauravk.bubblenavigation.BubbleNavigationLinearView;
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -306,6 +301,11 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        bubbleNavigationLinearView.setCurrentActiveItem(2);
     }
 }

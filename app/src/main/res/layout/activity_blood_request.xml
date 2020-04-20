@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:background="#FFF"
-    tools:context=".OtherActivities.BloodRequestActivity">
+    tools:context=".Bloods.Activity.BloodRequestActivity">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar_blood_request"
