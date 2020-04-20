@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     MaterialToolbar toolbar;
+    MediaPlayer mediaPlayer;
     int bloodCount = 0;
 
     @Override
@@ -72,8 +73,11 @@ public class MainActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new HomeFragment()).commit();
         }
 
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.welcome);
+
+        /*Welcome to easy helper creepy sound*/
+        mediaPlayer = MediaPlayer.create(this, R.raw.welcome);
         mediaPlayer.start();
+        /*Welcome to easy helper creepy sound*/
 
 
         //view id
@@ -307,5 +311,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         bubbleNavigationLinearView.setCurrentActiveItem(2);
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp)
+            {
+                mediaPlayer.release();
+            }
+        });
     }
 }
