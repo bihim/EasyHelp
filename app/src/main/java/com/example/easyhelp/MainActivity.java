@@ -10,6 +10,7 @@ import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     MaterialToolbar toolbar;
     MediaPlayer mediaPlayer;
     int bloodCount = 0;
+    boolean onBackPressedOnce = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -70,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         //default fragment which is home
         if (savedInstanceState == null)
         {
-            getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new HomeFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new HomeFragment(), "0").commit();
         }
 
 
@@ -96,26 +98,30 @@ public class MainActivity extends AppCompatActivity {
                 {
                     case 0:
                         selectFragment = new HomeFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, selectFragment, "0").commit();
                         break;
 
                     case 1:
                         selectFragment = new MessageFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, selectFragment, "1").commit();
                         break;
 
                     case 2:
                         selectFragment = new AdvertisementFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, selectFragment, "2").commit();
                         break;
 
                     case 3:
                         selectFragment = new NewsFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, selectFragment, "3").commit();
                         break;
 
                     case 4:
                         selectFragment = new BloodFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, selectFragment, "4").commit();
                         break;
                 }
 
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, selectFragment).commit();
             }
         });
 
@@ -318,5 +324,35 @@ public class MainActivity extends AppCompatActivity {
                 mediaPlayer.release();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        /*if(onBackPressedOnce)
+        {
+            super.onBackPressed();
+            bubbleNavigationLinearView.setCurrentActiveItem(0);
+            getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new HomeFragment()).commit();
+            return;
+        }
+
+        this.onBackPressedOnce = true;
+        //onBackPressedOnce = false;
+
+        new Handler().postDelayed(() -> onBackPressedOnce = false,50);*/
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.frame_layout);
+        if (fragment.getTag().equals("0"))
+        {
+            super.onBackPressed();
+        }
+        else
+        {
+            bubbleNavigationLinearView.setCurrentActiveItem(0);
+            getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new HomeFragment(),"0").commit();
+        }
+
+
+
     }
 }

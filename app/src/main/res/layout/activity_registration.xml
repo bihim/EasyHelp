@@ -14,13 +14,14 @@
         android:orientation="vertical">
 
         <TextView
-            android:text="Enter Additional Information"
+            android:text="Registration"
             android:textColor="@color/register_button_gradient_start_color"
             android:textSize="45sp"
             android:gravity="center"
             android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"/>
 
         <ss.anoop.awesometextinputlayout.AwesomeTextInputLayout
