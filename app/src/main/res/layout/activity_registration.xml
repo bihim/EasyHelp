@@ -60,43 +60,6 @@
                 android:hint="Enter Email"
                 android:inputType="textEmailAddress"/>
         </ss.anoop.awesometextinputlayout.AwesomeTextInputLayout>
-
-        <ss.anoop.awesometextinputlayout.AwesomeTextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:borderColor="@color/register_button_gradient_start_color"
-            app:borderWidth="2dp"
-            app:cornerRadius="8dp"
-            android:padding="16dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp">
-            <EditText
-                android:id="@+id/registration_user_first_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter Password"
-                android:inputType="textPassword"/>
-        </ss.anoop.awesometextinputlayout.AwesomeTextInputLayout>
-
-        <ss.anoop.awesometextinputlayout.AwesomeTextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:borderColor="@color/register_button_gradient_start_color"
-            app:borderWidth="2dp"
-            app:cornerRadius="8dp"
-            android:padding="16dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp">
-            <EditText
-                android:id="@+id/registration_user_re_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Confirm Password"
-                android:inputType="textPassword"/>
-        </ss.anoop.awesometextinputlayout.AwesomeTextInputLayout>
-
         <ss.anoop.awesometextinputlayout.AwesomeTextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -162,6 +125,43 @@
                 android:layout_height="wrap_content"
                 android:hint="Enter Referral ID (can be blank)"/>
         </ss.anoop.awesometextinputlayout.AwesomeTextInputLayout>
+
+        <ss.anoop.awesometextinputlayout.AwesomeTextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:borderColor="@color/register_button_gradient_start_color"
+            app:borderWidth="2dp"
+            app:cornerRadius="8dp"
+            android:padding="16dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp">
+            <EditText
+                android:id="@+id/registration_user_first_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Password"
+                android:inputType="textPassword"/>
+        </ss.anoop.awesometextinputlayout.AwesomeTextInputLayout>
+
+        <ss.anoop.awesometextinputlayout.AwesomeTextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:borderColor="@color/register_button_gradient_start_color"
+            app:borderWidth="2dp"
+            app:cornerRadius="8dp"
+            android:padding="16dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp">
+            <EditText
+                android:id="@+id/registration_user_re_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Confirm Password"
+                android:inputType="textPassword"/>
+        </ss.anoop.awesometextinputlayout.AwesomeTextInputLayout>
+
 
         <life.sabujak.roundedbutton.RoundedButton
             android:id="@+id/registration_button"

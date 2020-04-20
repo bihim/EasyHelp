@@ -53,7 +53,18 @@ public class BeforeRegistrationUserCheckActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                if (!editTextUserNumber.getText().toString().isEmpty())
+
+                if (editTextUserNumber.getText().toString().isEmpty())
+                {
+                    Toasty.error(BeforeRegistrationUserCheckActivity.this, "Empty Number", Toasty.LENGTH_SHORT, true).show();
+                }
+
+                else if (!editTextUserNumber.getText().toString().matches("01[0-9]{9}")) //Bangladeshi number matching
+                {
+                    Toasty.error(BeforeRegistrationUserCheckActivity.this, "Invalid Number", Toasty.LENGTH_SHORT, true).show();
+                }
+
+                else
                 {
                     Call<BeforeRegistrationUserCheckAPI> call = placeHolderAPI.getUserCheck(editTextUserNumber.getText().toString());
                     call.enqueue(new Callback<BeforeRegistrationUserCheckAPI>() {
