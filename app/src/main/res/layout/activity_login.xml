@@ -23,7 +23,7 @@
         android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="20dp" />
 
     <ss.anoop.awesometextinputlayout.AwesomeTextInputLayout
         android:layout_width="match_parent"
@@ -39,7 +39,8 @@
             android:id="@+id/login_user_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter Mobile"/>
+            android:hint="Enter Mobile"
+            android:inputType="number"/>
     </ss.anoop.awesometextinputlayout.AwesomeTextInputLayout>
 
     <ss.anoop.awesometextinputlayout.AwesomeTextInputLayout

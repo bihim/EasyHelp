@@ -157,6 +157,7 @@ public class LoginActivity extends AppCompatActivity
                     editor.putString("image_url", loginAPIElements.getImage_url());
                     editor.putString("institute_name", loginAPIElements.getInstitute_name());
                     editor.putString("facebook_url", null);
+                    editor.putBoolean("user_register", true);
                     boolean facebookExists = preferences.getBoolean("facebook_done", false);
                     if (!facebookExists)
                     {

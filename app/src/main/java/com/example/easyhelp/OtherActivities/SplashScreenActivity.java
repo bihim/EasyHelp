@@ -33,6 +33,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     Retrofit retrofit;
     PlaceHolderAPI placeHolderAPI;
     SharedPreferences preferences;
+    SharedPreferences.Editor editor;
     String baseUrl;
     String userName;
     String password;
@@ -46,7 +47,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         if (!isNetWorkConnectedd())
         {
-            startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
+            startActivity(new Intent(SplashScreenActivity.this, ErrorActivity.class));
             finish();
         }
         else
@@ -74,43 +75,58 @@ public class SplashScreenActivity extends AppCompatActivity {
         password = preferences.getString("password", null);
         category = preferences.getString("category", null);
 
-        if (userName == null && password == null)
+        if (preferences.contains("user_register"))
         {
-            startActivity(new Intent(SplashScreenActivity.this, GoToLoginRegisterActivity.class));
+            if(!preferences.getBoolean("user_register", false))
+            {
+                startActivity(new Intent(SplashScreenActivity.this, GoToLoginRegisterActivity.class));
+                finish();
+            }
+
+            /*if (userName == null && password == null)
+            {
+
+            }*/
+
+            else if (preferences.getBoolean("user_register", false))
+            {
+                baseUrl = new BaseUrl().baseUrl;
+                retrofit = new Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(GsonConverterFactory.create()).build();
+                placeHolderAPI = retrofit.create(PlaceHolderAPI.class);
+
+                Call<LoginAPIElements> call = placeHolderAPI.getLoginInfo(userName, password, "");
+                call.enqueue(new Callback<LoginAPIElements>() {
+                    @Override
+                    public void onResponse(Call<LoginAPIElements> call, Response<LoginAPIElements> response)
+                    {
+                        if (!response.isSuccessful())
+                        {
+                            Toasty.error(SplashScreenActivity.this, "Error Code: " +response.code(),Toasty.LENGTH_SHORT,true).show();
+                            startActivity(new Intent(SplashScreenActivity.this, GoToLoginRegisterActivity.class));
+                        }
+
+                        LoginAPIElements loginAPIElements = response.body();
+
+                        int errorCode = loginAPIElements.getError();
+
+                        if (errorCode == 0)
+                        {
+                            startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<LoginAPIElements> call, Throwable t) {
+
+                    }
+                });
+            }
         }
 
         else
         {
-            baseUrl = new BaseUrl().baseUrl;
-            retrofit = new Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(GsonConverterFactory.create()).build();
-            placeHolderAPI = retrofit.create(PlaceHolderAPI.class);
-
-            Call<LoginAPIElements> call = placeHolderAPI.getLoginInfo(userName, password, "");
-            call.enqueue(new Callback<LoginAPIElements>() {
-                @Override
-                public void onResponse(Call<LoginAPIElements> call, Response<LoginAPIElements> response)
-                {
-                    if (!response.isSuccessful())
-                    {
-                        Toasty.error(SplashScreenActivity.this, "Error Code: " +response.code(),Toasty.LENGTH_SHORT,true).show();
-                        startActivity(new Intent(SplashScreenActivity.this, GoToLoginRegisterActivity.class));
-                    }
-
-                    LoginAPIElements loginAPIElements = response.body();
-
-                    int errorCode = loginAPIElements.getError();
-
-                    if (errorCode == 0)
-                    {
-                        startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<LoginAPIElements> call, Throwable t) {
-
-                }
-            });
+            startActivity(new Intent(SplashScreenActivity.this, GoToLoginRegisterActivity.class));
+            finish();
         }
 
     }

@@ -110,6 +110,7 @@ public class RegistrationActivity extends AppCompatActivity {
                                     editor.putString("user_name", mobile);
                                     editor.putString("password", password);
                                     editor.putString("name", name);
+                                    editor.putBoolean("user_register", true);
                                     editor.apply();
                                     startActivity(new Intent(RegistrationActivity.this, LoadingActivity.class));
                                     finish();
