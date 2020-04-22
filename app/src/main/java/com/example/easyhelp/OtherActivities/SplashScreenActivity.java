@@ -111,6 +111,10 @@ public class SplashScreenActivity extends AppCompatActivity {
 
                         if (errorCode == 0)
                         {
+                            preferences = PreferenceManager.getDefaultSharedPreferences(SplashScreenActivity.this);
+                            editor = preferences.edit();
+                            editor.putBoolean("media", true);
+                            editor.apply();
                             startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
                         }
                     }

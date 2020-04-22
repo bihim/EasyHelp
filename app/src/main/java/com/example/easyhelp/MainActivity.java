@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.toolbar_main);
         setSupportActionBar(toolbar);
+
         threadToast(this);
 
         if (construction() == 1)
@@ -76,10 +77,27 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        /*Welcome to easy helper creepy sound*/
-        mediaPlayer = MediaPlayer.create(this, R.raw.welcome);
-        mediaPlayer.start();
-        /*Welcome to easy helper creepy sound*/
+
+        Context context= MainActivity.this;
+        preferences = PreferenceManager.getDefaultSharedPreferences(context);
+
+        if (preferences.getBoolean("media", true))
+        {
+            /*Welcome to easy helper creepy sound*/
+            mediaPlayer = MediaPlayer.create(this, R.raw.welcome);
+            mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp)
+                {
+                    editor = preferences.edit();
+                    editor.putBoolean("media", false);
+                    editor.apply();
+                }
+            });
+            /*Welcome to easy helper creepy sound*/
+        }
+
 
 
         //view id
@@ -314,19 +332,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        bubbleNavigationLinearView.setCurrentActiveItem(2);
-        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp)
-            {
-                mediaPlayer.release();
-            }
-        });
-    }
-
-    @Override
     public void onBackPressed()
     {
         /*if(onBackPressedOnce)
@@ -352,7 +357,11 @@ public class MainActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new HomeFragment(),"0").commit();
         }
 
-
+        Context context= MainActivity.this;
+        preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        editor = preferences.edit();
+        editor.putBoolean("media", true);
+        editor.apply();
 
     }
 }

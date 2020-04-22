@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".OtherActivities.ErrorActivity"></activity>
+        <activity android:name=".Profile.Activity.ProfileEditActivity"></activity>
+        <activity android:name=".OtherActivities.ErrorActivity" />
         <activity android:name=".RegistrationAndLogin.Login.Activity.LoadingActivity" />
         <activity android:name=".RegistrationAndLogin.Registration.Activity.ThanaActivity" />
         <activity android:name=".RegistrationAndLogin.Registration.Activity.DistrictActivity" />

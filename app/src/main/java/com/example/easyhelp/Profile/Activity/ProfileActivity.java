@@ -122,7 +122,11 @@ public class ProfileActivity extends AppCompatActivity {
                 }
 
                 ProfileItemAPI profileItemAPI = response.body();
-                //
+                //for profile to edit
+                Context context = ProfileActivity.this;
+                preferences = PreferenceManager.getDefaultSharedPreferences(context);
+                editor = preferences.edit();
+
                 profileItems = new ArrayList<>();
                 preferences = PreferenceManager.getDefaultSharedPreferences(ProfileActivity.this);
                 profileRecyclerView = findViewById(R.id.profile_details_recyclerview);
@@ -144,7 +148,7 @@ public class ProfileActivity extends AppCompatActivity {
                     if (items.getTitle().equals("Name"))
                     {
                         profileItems.add(new ProfileItem("Name", items.getDetails()));
-                        toolbarText.setText(items.getDetails()+"'s Profile");
+                        //toolbarText.setText(items.getDetails()+"'s Profile");
                     }
 
                     if (items.getTitle().equals("Mobile"))
