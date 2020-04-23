@@ -23,7 +23,7 @@ import com.example.easyhelp.CustomDialog.CustomDialog;
 import com.example.easyhelp.CustomSpinner.CustomSpinnerAdapter;
 import com.example.easyhelp.RegistrationAndLogin.Login.Item.LoginAPIElements;
 import com.example.easyhelp.MainActivity;
-import com.example.easyhelp.OtherActivities.ForgetPasswordActivity;
+import com.example.easyhelp.RegistrationAndLogin.ForgetPassword.Activity.ForgetPasswordActivity;
 import com.example.easyhelp.R;
 import com.google.android.material.appbar.MaterialToolbar;
 

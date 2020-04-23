@@ -2,6 +2,7 @@ package com.example.easyhelp.OtherActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,6 +10,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.widget.Toast;
 
 import com.example.easyhelp.API.BaseUrl;
 import com.example.easyhelp.API.PlaceHolderAPI;
@@ -17,7 +19,11 @@ import com.example.easyhelp.Construction.Item.ConstructionItems;
 import com.example.easyhelp.RegistrationAndLogin.Login.Item.LoginAPIElements;
 import com.example.easyhelp.MainActivity;
 import com.example.easyhelp.R;
+import com.intentfilter.androidpermissions.PermissionManager;
+import com.intentfilter.androidpermissions.models.DeniedPermission;
+import com.intentfilter.androidpermissions.models.DeniedPermissions;
 
+import java.util.Arrays;
 import java.util.Timer;
 
 import es.dmoral.toasty.Toasty;
@@ -26,6 +32,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+
+import static java.util.Collections.singleton;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
@@ -45,16 +53,45 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        if (!isNetWorkConnectedd())
-        {
-            startActivity(new Intent(SplashScreenActivity.this, ErrorActivity.class));
-            finish();
-        }
-        else
-        {
-            login();
-        }
-        finish();
+        PermissionManager permissionManager = PermissionManager.getInstance(this);
+        permissionManager.checkPermissions(singleton(Manifest.permission.CALL_PHONE), new PermissionManager.PermissionRequestListener() {
+            @Override
+            public void onPermissionGranted() {
+                if (!isNetWorkConnectedd())
+                {
+                    startActivity(new Intent(SplashScreenActivity.this, ErrorActivity.class));
+                    finish();
+                }
+                else
+                {
+                    login();
+                }
+                finish();
+                //Toast.makeText(SplashScreenActivity.this, "Permissions Granted", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onPermissionDenied(DeniedPermissions deniedPermissions) {
+                String deniedPermissionsText = "Denied: " + Arrays.toString(deniedPermissions.toArray());
+                Toast.makeText(SplashScreenActivity.this, deniedPermissionsText, Toast.LENGTH_SHORT).show();
+                if (!isNetWorkConnectedd())
+                {
+                    startActivity(new Intent(SplashScreenActivity.this, ErrorActivity.class));
+                    finish();
+                }
+                else
+                {
+                    login();
+                }
+                finish();
+
+                for (DeniedPermission deniedPermission : deniedPermissions) {
+                    if(deniedPermission.shouldShowRationale()) {
+                        // Display a rationale about why this permission is required
+                    }
+                }
+            }
+        });
 
         /*timer = new Timer();
         timer.schedule(new TimerTask() {

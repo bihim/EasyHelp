@@ -67,7 +67,7 @@ public class ProfileActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         logoutButton = findViewById(R.id.profile_toolbar_logout_button);
         toolbarText = findViewById(R.id.profile_toolbar_text);
-        changePassword = findViewById(R.id.change_password_button_profile);
+        changePassword = findViewById(R.id.profile_edit_profile);
         toolbarText.setText("Profile");
         threadToast(this);
 
@@ -95,7 +95,8 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                startActivity(new Intent(ProfileActivity.this, ChangePasswordActivity.class));
+                startActivity(new Intent(ProfileActivity.this, ProfileEditActivity.class));
+                finish();
             }
         });
     }

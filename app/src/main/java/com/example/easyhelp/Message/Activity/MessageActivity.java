@@ -1,4 +1,4 @@
-package com.example.easyhelp.OtherActivities;
+package com.example.easyhelp.Message.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.easyhelp.R;
 
-public class ForgetPasswordActivity extends AppCompatActivity {
+public class MessageActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forget_password);
+        setContentView(R.layout.activity_message);
     }
 }

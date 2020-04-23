@@ -1,4 +1,4 @@
-package com.example.easyhelp.Fragment;
+package com.example.easyhelp.Message;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

@@ -1,5 +1,6 @@
 package com.example.easyhelp.API;
 
+import com.example.easyhelp.RegistrationAndLogin.ForgetPassword.Items.ForgetPasswordItems;
 import com.example.easyhelp.RegistrationAndLogin.Registration.Item.BeforeRegistrationUserCheckAPI;
 import com.example.easyhelp.Bloods.Item.BloodReportListAPI;
 import com.example.easyhelp.Bloods.Item.BloodRequestAPI;
@@ -130,6 +131,16 @@ public interface PlaceHolderAPI
             @Field("Division_ID") String DivisionID,
             @Field("District_ID") String District_ID
     );
+
+    /*Forget Password API*/
+ @FormUrlEncoded
+ @POST("forget_password_change.php")
+ Call<ForgetPasswordItems> getForgetPassword(
+           @Field("user_name") String user_name,
+           @Field("category") String category,
+           @Field("new_password") String new_password,
+           @Field("again_password") String again_password
+ );
 
 }
 

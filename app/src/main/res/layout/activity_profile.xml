@@ -52,6 +52,20 @@
         android:orientation="vertical"
         android:gravity="center"
         android:background="#EDEDED">
+
+        <life.sabujak.roundedbutton.RoundedButton
+            android:id="@+id/profile_edit_profile"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="Edit Profile"
+            android:textStyle="bold"
+            android:textColor="#FFF"
+            app:buttonColor="@color/logo_color_3"
+            app:buttonCornerRadius="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_photo"
             android:layout_width="100dp"
@@ -59,19 +73,6 @@
             android:src="@drawable/ic_general"
             app:civ_border_color="@color/login_button_gradient_start_color"
             android:layout_margin="10dp"/>
-        <life.sabujak.roundedbutton.RoundedButton
-            android:id="@+id/change_password_button_profile"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:text="Change Password"
-            android:textStyle="bold"
-            android:textColor="#FFF"
-            app:buttonColor="@color/change_password_color"
-            app:buttonCornerRadius="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/profile_details_recyclerview"

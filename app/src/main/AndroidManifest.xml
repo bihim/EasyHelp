@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Profile.Activity.ProfileEditActivity"></activity>
+        <activity android:name=".Message.Activity.MessageActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".Profile.Activity.ProfileEditActivity"
+            android:parentActivityName=".Profile.Activity.ProfileActivity" />
         <activity android:name=".OtherActivities.ErrorActivity" />
         <activity android:name=".RegistrationAndLogin.Login.Activity.LoadingActivity" />
         <activity android:name=".RegistrationAndLogin.Registration.Activity.ThanaActivity" />
@@ -23,12 +28,12 @@
         <activity android:name=".RegistrationAndLogin.Registration.Activity.BeforeRegistrationUserCheckActivity" />
         <activity android:name=".Bloods.Activity.BloodReportOwnActivity" />
         <activity android:name=".Bloods.Activity.BloodRequestActivity" />
-        <activity android:name=".OtherActivities.ForgetPasswordActivity" />
+        <activity android:name=".RegistrationAndLogin.ForgetPassword.Activity.ForgetPasswordActivity" />
         <activity android:name=".OtherActivities.OneTimeOnlyActivity" />
         <activity android:name=".Facebook.Activity.FacebookCopyLinkUrlActivity" />
         <activity
             android:name=".ChangePassword.Activity.ChangePasswordActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".Profile.Activity.ProfileEditActivity" />
         <activity android:name=".Construction.Activity.ConstructionActivity" />
         <activity
             android:name=".WelcomeSpeech.WelcomeSpeech"

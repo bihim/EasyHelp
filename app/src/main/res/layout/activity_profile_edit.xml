@@ -8,6 +8,31 @@
     android:gravity="center_horizontal"
     tools:context=".Profile.Activity.ProfileEditActivity">
 
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_general"/>
+
+    <life.sabujak.roundedbutton.RoundedButton
+        android:id="@+id/change_password_button_profile"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:text="Change Password"
+        android:textStyle="bold"
+        android:textColor="#FFF"
+        app:buttonColor="@color/change_password_color"
+        app:buttonCornerRadius="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="This feature will come soon"/>
 
 
 </LinearLayout>
